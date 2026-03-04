@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Gradient Wave Hero</title>
+
+<style>
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  overflow-x:hidden;
+  background:#f4f7fb;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 8%;
+  background:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836") no-repeat center/cover;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* Overlay */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, rgba(0,0,0,0.75), rgba(0,0,0,0.4));
+  z-index:1;
+}
+
+/* Content */
+.hero-content{
+  position:relative;
+  z-index:3;
+  max-width:550px;
+}
+
+.hero-content h1{
+  font-size:3.8rem;
+  margin-bottom:20px;
+  line-height:1.2;
+  opacity:0;
+  animation:fadeUp 1s ease forwards;
+}
+
+.hero-content p{
+  font-size:1.2rem;
+  margin-bottom:30px;
+  opacity:0;
+  animation:fadeUp 1s ease forwards;
+  animation-delay:.3s;
+}
+
+.hero-content button{
+  padding:15px 38px;
+  border:none;
+  background:#ff6b35;
+  color:#fff;
+  border-radius:40px;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.3s;
+  opacity:0;
+  animation:fadeUp 1s ease forwards;
+  animation-delay:.6s;
+}
+
+.hero-content button:hover{
+  background:#ff3d00;
+}
+
+/* Floating Image */
+.floating-img{
+  position:relative;
+  z-index:3;
+  width:650px;
+  max-width:90%;
+  animation:float 5s ease-in-out infinite;
+}
+
+.floating-img img{
+  width:100%;
+  display:block;
+}
+
+/* Float */
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-30px);}
+  100%{transform:translateY(0);}
+}
+
+/* FadeUp */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ================= DIAGONAL CURVE ================= */
+
+.hero::after{
+  content:"";
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:100%;
+  height:180px;
+  background:#f4f7fb;
+  clip-path:ellipse(75% 100% at 50% 100%);
+  z-index:2;
+}
+
+/* ================= GRADIENT WAVES (NO IMAGE) ================= */
+
+.wave-wrapper{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:160px;
+  overflow:hidden;
+  z-index:2;
+}
+
+/* Base wave style */
+.wave{
+  position:absolute;
+  bottom:0;
+  width:200%;
+  height:100%;
+  border-radius:45%;
+  background:linear-gradient(270deg, #ff6b35, #ff9a3c, #ff6b35);
+  animation:waveMove 10s linear infinite, gradientShift 6s ease infinite;
+}
+
+/* Layer variations */
+.wave1{
+  opacity:.8;
+  bottom:40;
+}
+
+.wave2{
+  opacity:.4;
+  bottom:40px;
+  animation-duration:14s, 8s;
+}
+
+.wave3{
+  opacity:.25;
+  bottom:40px;
+  animation-duration:20s, 10s;
+}
+
+/* Horizontal movement */
+@keyframes waveMove{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+
+/* Gradient animation */
+@keyframes gradientShift{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media(max-width:992px){
+  .hero{
+    flex-direction:column;
+    text-align:center;
+    justify-content:center;
+    padding-top:80px;
+  }
+
+  .hero-content h1{
+    font-size:2.8rem;
+  }
+
+  .floating-img{
+    width:450px;
+    margin-top:40px;
+  }
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .hero-content h1{
+    font-size:2.2rem;
+  }
+
+  .hero-content p{
+    font-size:1rem;
+  }
+
+  .floating-img{
+    width:320px;
+  }
+
+  .hero::after{
+    height:120px;
+  }
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+  .hero-content h1{
+    font-size:1.8rem;
+  }
+
+  .floating-img{
+    width:260px;
+  }
+}
+
+
+.wave {
+background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTc0LjQ3MDY0IDQ2LjM0NTk0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IndhdmUtZ3JhZGllbnQiIHgxPSIwJSIgeTE9IjEwMCUiIHgyPSIwJSIgeTI9IjAlIj4KICAgICAgPHN0b3Agc3R5bGU9InN0b3AtY29sb3I6IzAwMDAzZjsiIG9mZnNldD0iMCIgaWQ9ImRlZXAtb2NlYW4iIC8+CiAgICAgIDxzdG9wIHN0eWxlPSJzdG9wLWNvbG9yOiM0ZTZmZmY7IiBvZmZzZXQ9IjEiIGlkPSJzaGFsbG93LW9jZWFuIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHBhdGggc3R5bGU9ImZpbGw6dXJsKCN3YXZlLWdyYWRpZW50KTtmaWxsLXJ1bGU6ZXZlbm9kZCIgZD0ibSAwLDExLjM4NDQ4IGMgMCwwIDIxLjEzMzg1MSwxMS4zOTUzMSA0My42MTc2NjEsMTEuMzg0NDEgQyA2Ni4xMDE0NzEsMjIuNzU3OTkgMTA3Ljk2ODU2LDAuMDMyNjIgMTMwLjUwOCw3ZS01IGMgMjIuNTM5NDQsLTAuMDMyNSA0My45NjI2NCwxMS4zODQ0MSA0My45NjI2NCwxMS4zODQ0MSBWIDQ2LjM0NTk0IEggMCBaIiAvPgo8L3N2Zz4=");
+background-repeat: repeat-x;
+background-size: 500px auto;
+background-position: bottom;
+position: absolute;
+bottom: 0%;
+width: 100%;
+height: 200px;
+animation: wave 5s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+z-index: 1;
+}
+
+.wave:nth-of-type(2) {
+opacity: 0.7;
+animation: swell 5s ease -1.25s infinite, wave 5s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite;
+z-index: 0;
+}
+
+@keyframes wave {
+0% {
+background-position-x: 0%;
+}
+100% {
+background-position-x: -500px;
+}
+}
+
+@keyframes swell {
+0%, 100% {
+background-position: right bottom 10px;
+}
+50% {
+background-position: right bottom 0;
+}
+} 
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+  <div class="hero-content">
+    <h1>Modern Food Delivery</h1>
+    <p>Premium dining experience with fast delivery and fresh ingredients.</p>
+    <button>Order Now</button>
+  </div>
+
+  <div class="floating-img">
+    <img src="https://pngimg.com/uploads/pizza/pizza_PNG7131.png" alt="Food">
+  </div>
+
+  <!-- Gradient Waves -->
+  <div class="wave-wrapper">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+
+  <div class="ocean">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  
+
+</section>
+
+</body>
+</html>
