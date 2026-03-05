@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food delivery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style1.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="home2.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about1.html">About</a></li>
+                <li><a href="./grocery.html">Grocery</a></li>
+                <li><a href="./contact1.html">contact</a></li>
+                
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+
+<section class="fdHeroSliderSection">
+
+    <div class="fdHeroSlider">
+    
+    <!-- SLIDES -->
+    <div class="fdHeroSlide active">
+    <img src="./back2.webp" alt="">
+    </div>
+    
+    <div class="fdHeroSlide">
+    <img src="./back3.webp" alt="">
+    </div>
+    
+    <div class="fdHeroSlide">
+    <img src="./back4webp.webp" alt="">
+    </div>
+    
+    </div>
+    
+    
+    <!-- OVERLAY -->
+    <div class="fdHeroOverlay"></div>
+    
+    
+    <!-- CONTENT -->
+    <div class="fdHeroContent">
+    
+    <h1>GROCERY</h1>
+    
+    <p>
+    Discover the convenience of online grocery shopping with our user-friendly app.
+    From fresh produce to pantry essentials, we bring the market to your doorstep.
+    Enjoy seamless browsing, secure payments, and fast delivery.
+    </p>
+    
+    <div class="fdHeroStoreButtons">
+    <a href="./404.html" class="fdHeroBtn">App Store</a>
+    <a href="./404.html" class="fdHeroBtn fdGoogleBtn">Google Play</a>
+    </div>
+    
+    </div>
+    
+    </section>
+
+    <Style>
+        /* SECTION */
+
+.fdHeroSliderSection{
+position:relative;
+width:100%;
+height:90vh;
+overflow:hidden;
+font-family:Poppins,sans-serif;
+}
+
+/* SLIDER */
+
+.fdHeroSlider{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+}
+
+/* EACH SLIDE */
+
+.fdHeroSlide{
+position:absolute;
+width:100%;
+height:100%;
+opacity:0;
+transition:opacity 1s ease-in-out;
+}
+
+.fdHeroSlide img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* ACTIVE SLIDE */
+
+.fdHeroSlide.active{
+opacity:1;
+}
+
+/* OVERLAY */
+
+.fdHeroOverlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
+z-index:2;
+}
+
+/* CONTENT */
+
+.fdHeroContent{
+position:relative;
+z-index:3;
+max-width:900px;
+height:100%;
+margin:auto;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+color:white;
+}
+
+/* TITLE */
+
+.fdHeroContent h1{
+font-size:60px;
+margin-bottom:20px;
+letter-spacing:2px;
+}
+
+/* TEXT */
+
+.fdHeroContent p{
+font-size:18px;
+line-height:1.6;
+max-width:700px;
+margin-bottom:30px;
+}
+
+/* BUTTONS */
+
+.fdHeroStoreButtons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.fdHeroBtn{
+padding:12px 28px;
+background:#27ae60;
+border-radius:30px;
+color:white;
+text-decoration:none;
+font-size:15px;
+transition:.3s;
+}
+
+.fdHeroBtn:hover{
+background:#1e8e4f;
+}
+
+.fdGoogleBtn{
+background:#000;
+}
+
+.fdGoogleBtn:hover{
+background:#222;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+/* LAPTOP */
+
+@media(max-width:1200px){
+
+.fdHeroContent h1{
+font-size:50px;
+}
+
+}
+
+/* TABLET */
+
+@media(max-width:992px){
+
+.fdHeroContent h1{
+font-size:40px;
+}
+
+.fdHeroContent p{
+font-size:16px;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.fdHeroSliderSection{
+height:80vh;
+}
+
+.fdHeroContent h1{
+font-size:32px;
+}
+
+.fdHeroContent p{
+font-size:14px;
+}
+
+.fdHeroBtn{
+padding:10px 20px;
+font-size:14px;
+}
+
+}
+    </Style>
+
+    <script>
+        const fdSlides = document.querySelectorAll(".fdHeroSlide");
+
+let fdIndex = 0;
+
+function fdAutoSlide(){
+
+fdSlides.forEach(slide=>{
+slide.classList.remove("active");
+});
+
+fdIndex++;
+
+if(fdIndex >= fdSlides.length){
+fdIndex = 0;
+}
+
+fdSlides[fdIndex].classList.add("active");
+
+}
+
+setInterval(fdAutoSlide,4000);
+    </script>
+
+<section class="qpProductSection">
+
+    <div class="qpHeader">
+    <h2>Our <span>Products</span></h2>
+    <p>Fresh groceries and essentials delivered fast</p>
+    </div>
+    
+    <!-- FILTER -->
+    <div class="qpFilters">
+    <button class="qpFilterBtn active" data-filter="all">All</button>
+    <button class="qpFilterBtn" data-filter="grocery">Groceries</button>
+    <button class="qpFilterBtn" data-filter="home">Home Essentials</button>
+    <button class="qpFilterBtn" data-filter="snack">Desserts & Snacks</button>
+    </div>
+    
+    
+    <!-- PRODUCT GRID -->
+    <div class="qpGrid">
+    
+    <!-- PRODUCT -->
+    <div class="qpCard grocery">
+    
+    <div class="qpImgWrap">
+    <img src="./tomato.webp">
+    
+    <div class="qpQuickView">Quick View</div>
+    </div>
+    
+    <h3>Fresh Tomatoes</h3>
+    
+    <p class="qpDesc">
+    Farm fresh organic tomatoes picked daily.  
+    Perfect for salads and cooking.
+    </p>
+    
+    <div class="qpRating">★★★★★</div>
+    
+    <div class="qpBottom">
+    <span>$3.40</span>
+    <button class="qpCart">🛒</button>
+    </div>
+    
+    </div>
+
+    <div class="qpCard grocery">
+    
+        <div class="qpImgWrap">
+        <img src="./tomato.webp">
+        
+        <div class="qpQuickView">Quick View</div>
+        </div>
+        
+        <h3>Fresh Tomatoes</h3>
+        
+        <p class="qpDesc">
+        Farm fresh organic tomatoes picked daily.  
+        Perfect for salads and cooking.
+        </p>
+        
+        <div class="qpRating">★★★★★</div>
+        
+        <div class="qpBottom">
+        <span>$3.40</span>
+        <button class="qpCart">🛒</button>
+        </div>
+        
+        </div>
+    
+        
+        <div class="qpCard grocery">
+    
+            <div class="qpImgWrap">
+            <img src="./Cauliflower.webp">
+            
+            <div class="qpQuickView">Quick View</div>
+            </div>
+            
+            <h3>Fresh Tomatoes</h3>
+            
+            <p class="qpDesc">
+            Farm fresh organic cauliflowe picked daily.  
+            Perfect for salads and cooking.
+            </p>
+            
+            <div class="qpRating">★★★★★</div>
+            
+            <div class="qpBottom">
+            <span>$3.40</span>
+            <button class="qpCart">🛒</button>
+            </div>
+            
+            </div>
+    
+            
+            <div class="qpCard grocery">
+    
+                <div class="qpImgWrap">
+                <img src="./Garlic.webp">
+                
+                <div class="qpQuickView">Quick View</div>
+                </div>
+                
+                <h3>Fresh Tomatoes</h3>
+                
+                <p class="qpDesc">
+                Farm fresh organic garlic picked daily.  
+                Perfect for salads and cooking.
+                </p>
+                
+                <div class="qpRating">★★★★★</div>
+                
+                <div class="qpBottom">
+                <span>$3.40</span>
+                <button class="qpCart">🛒</button>
+                </div>
+                
+                </div>
+    
+                
+                <div class="qpCard grocery">
+    
+                    <div class="qpImgWrap">
+                    <img src="./veg1.webp">
+                    
+                    <div class="qpQuickView">Quick View</div>
+                    </div>
+                    
+                    <h3>Fresh vegetables</h3>
+                    
+                    <p class="qpDesc">
+                    Farm fresh organic tomatoes picked daily.  
+                    Perfect for salads and cooking.
+                    </p>
+                    
+                    <div class="qpRating">★★★★★</div>
+                    
+                    <div class="qpBottom">
+                    <span>$3.40</span>
+                    <button class="qpCart">🛒</button>
+                    </div>
+                    
+                    </div>
+    
+                    
+                    <div class="qpCard grocery">
+    
+                        <div class="qpImgWrap">
+                        <img src="./fruits.webp">
+                        
+                        <div class="qpQuickView">Quick View</div>
+                        </div>
+                        
+                        <h3>Fresh Tomatoes</h3>
+                        
+                        <p class="qpDesc">
+                        Farm fresh organic  picked daily.  
+                        Perfect for salads and cooking.
+                        </p>
+                        
+                        <div class="qpRating">★★★★★</div>
+                        
+                        <div class="qpBottom">
+                        <span>$3.40</span>
+                        <button class="qpCart">🛒</button>
+                        </div>
+                        
+                        </div>
+                        
+    
+    
+    <!-- PRODUCT -->
+    <div class="qpCard grocery">
+    
+    <div class="qpImgWrap">
+    <img src="./dryfruits.webp">
+    <div class="qpQuickView">Quick View</div>
+    </div>
+    
+    <h3>Organic nuts</h3>
+    
+    <p class="qpDesc">
+    Sweet crispy apples directly from farms.  
+    Rich in fiber and nutrients.
+    </p>
+    
+    <div class="qpRating">★★★★★</div>
+    
+    <div class="qpBottom">
+    <span>$4.20</span>
+    <button class="qpCart">🛒</button>
+    </div>
+    
+    </div>
+    
+    
+    <!-- PRODUCT -->
+    <div class="qpCard home">
+    
+    <div class="qpImgWrap">
+    <img src="./detergent.webp">
+    <div class="qpQuickView">Quick View</div>
+    </div>
+    
+    <h3>Dish Wash Liquid</h3>
+    
+    <p class="qpDesc">
+    Powerful grease removing formula.  
+    Leaves utensils sparkling clean.
+    </p>
+    
+    <div class="qpRating">★★★★☆</div>
+    
+    <div class="qpBottom">
+    <span>$5.10</span>
+    <button class="qpCart">🛒</button>
+    </div>
+
+    
+    
+    </div>
+
+
+    <div class="qpCard home">
+    
+        <div class="qpImgWrap">
+        <img src="./deodorant.webp">
+        <div class="qpQuickView">Quick View</div>
+        </div>
+        
+        <h3>  Perfume </h3>
+        
+        <p class="qpDesc">
+        Lorem ipsum dolor, sit amet consectetur 
+        adipisicing elit. Maxime, a?
+        </p>
+        
+        <div class="qpRating">★★★★☆</div>
+        
+        <div class="qpBottom">
+        <span>$5.10</span>
+        <button class="qpCart">🛒</button>
+        </div>
+    
+        
+        
+        </div>
+
+
+    <div class="qpCard home">
+    
+        <div class="qpImgWrap">
+        <img src="./handwash.webp">
+        <div class="qpQuickView">Quick View</div>
+        </div>
+        
+        <h3>  hand wash</h3>
+        
+        <p class="qpDesc">
+        Lorem ipsum dolor, sit amet consectetur 
+        adipisicing elit. Maxime, a?
+        </p>
+        
+        <div class="qpRating">★★★★☆</div>
+        
+        <div class="qpBottom">
+        <span>$5.10</span>
+        <button class="qpCart">🛒</button>
+        </div>
+    
+        
+        
+        </div>
+
+
+    <div class="qpCard home">
+    
+        <div class="qpImgWrap">
+        <img src="./Shampoo.webp">
+        <div class="qpQuickView">Quick View</div>
+        </div>
+        
+        <h3>  shampoo </h3>
+        
+        <p class="qpDesc">
+        Lorem ipsum dolor, sit amet consectetur 
+        adipisicing elit. Maxime, a?
+        </p>
+        
+        <div class="qpRating">★★★★☆</div>
+        
+        <div class="qpBottom">
+        <span>$5.10</span>
+        <button class="qpCart">🛒</button>
+        </div>
+    
+        
+        
+        </div>
+
+        <div class="qpCard snack">
+    
+            <div class="qpImgWrap">
+            <img src="./dryfruits.webp">
+            <div class="qpQuickView">Quick View</div>
+            </div>
+            
+            <h3>  Dry fruits </h3>
+            
+            <p class="qpDesc">
+            Lorem ipsum dolor, sit amet consectetur 
+            adipisicing elit. Maxime, a?
+            </p>
+            
+            <div class="qpRating">★★★★☆</div>
+            
+            <div class="qpBottom">
+            <span>$5.10</span>
+            <button class="qpCart">🛒</button>
+            </div>
+        
+            
+            
+            </div>
+
+
+            <div class="qpCard snack">
+    
+                <div class="qpImgWrap">
+                <img src="./beverages.webp">
+                <div class="qpQuickView">Quick View</div>
+                </div>
+                
+                <h3>  Beverage  </h3>
+                
+                <p class="qpDesc">
+                Lorem ipsum dolor, sit amet consectetur 
+                adipisicing elit. Maxime, a?
+                </p>
+                
+                <div class="qpRating">★★★★☆</div>
+                
+                <div class="qpBottom">
+                <span>$5.10</span>
+                <button class="qpCart">🛒</button>
+                </div>
+            
+                
+                
+                </div>
+    
+    
+    <!-- PRODUCT -->
+    <div class="qpCard snack">
+    
+    <div class="qpImgWrap">
+    <img src="./chocolate.webp">
+    <div class="qpQuickView">Quick View</div>
+    </div>
+    
+    <h3>Chocolate Donuts</h3>
+    
+    <p class="qpDesc">
+    Soft fluffy donuts with chocolate glaze.  
+    Perfect sweet snack anytime.
+    </p>
+    
+    <div class="qpRating">★★★★★</div>
+    
+    <div class="qpBottom">
+    <span>$6.50</span>
+    <button class="qpCart">🛒</button>
+    </div>
+    
+    </div>
+    
+    
+    </div>
+
+
+    
+
+    
+
+
+    
+    
+    </section>
+    
+    
+    <!-- QUICK VIEW POPUP -->
+    <div class="qpPopup">
+    
+    <div class="qpPopupContent">
+    
+    <span class="qpClose">✕</span>
+    
+    <img id="qpPopupImg">
+    
+    <h3 id="qpPopupTitle"></h3>
+    
+    <p id="qpPopupDesc"></p>
+    
+    </div>
+    
+    </div>
+
+    <Style>
+        .qpProductSection{
+padding:80px 5%;
+font-family:Poppins;
+text-align:center;
+}
+
+.qpHeader h2{
+font-size:38px;
+}
+
+.qpHeader span{
+color:#27ae60;
+}
+
+.qpHeader p{
+margin-top:10px;
+color:#666;
+}
+
+/* FILTER */
+
+.qpFilters{
+margin:40px 0;
+}
+
+.qpFilterBtn{
+padding:10px 22px;
+border:none;
+background:#eee;
+border-radius:30px;
+margin:5px;
+cursor:pointer;
+font-weight:600;
+}
+
+.qpFilterBtn.active{
+background:#27ae60;
+color:white;
+}
+
+
+/* GRID */
+
+.qpGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+}
+
+
+/* CARD */
+
+.qpCard{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+opacity:0;
+transform:translateY(40px);
+transition:0.5s;
+}
+
+.qpCard.show{
+opacity:1;
+transform:translateY(0);
+}
+
+
+/* IMAGE */
+
+.qpImgWrap{
+position:relative;
+overflow:hidden;
+border-radius:80px 0 80px 0;
+height:170px;
+margin-bottom:15px;
+}
+
+.qpImgWrap img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+
+/* QUICK VIEW */
+
+.qpQuickView{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.7);
+color:white;
+padding:10px;
+transform:translateY(100%);
+transition:0.4s;
+cursor:pointer;
+}
+
+.qpImgWrap:hover .qpQuickView{
+transform:translateY(0);
+}
+
+
+/* DESCRIPTION */
+
+.qpDesc{
+font-size:14px;
+color:#666;
+margin:8px 0;
+line-height:1.4;
+height:40px;
+overflow:hidden;
+}
+
+
+/* RATING */
+
+.qpRating{
+color:gold;
+margin:8px 0;
+}
+
+
+/* BOTTOM */
+
+.qpBottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.qpCart{
+background:#27ae60;
+border:none;
+color:white;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+
+/* POPUP */
+
+.qpPopup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.qpPopupContent{
+background:white;
+padding:30px;
+border-radius:15px;
+max-width:400px;
+width:90%;
+text-align:center;
+position:relative;
+}
+
+.qpPopupContent img{
+width:100%;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.qpClose{
+position:absolute;
+top:10px;
+right:15px;
+font-size:20px;
+cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.qpHeader h2{
+font-size:28px;
+}
+
+.qpImgWrap{
+height:150px;
+}
+
+}
+    </Style>
+
+    <script>
+        // FILTER
+
+const filterBtns = document.querySelectorAll(".qpFilterBtn");
+const cards = document.querySelectorAll(".qpCard");
+
+filterBtns.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+document.querySelector(".qpFilterBtn.active").classList.remove("active");
+btn.classList.add("active");
+
+let filter = btn.dataset.filter;
+
+cards.forEach(card=>{
+
+if(filter === "all" || card.classList.contains(filter)){
+card.style.display="block";
+}
+else{
+card.style.display="none";
+}
+
+});
+
+});
+
+});
+
+
+// ADD TO CART -> 404
+
+document.querySelectorAll(".qpCart").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+window.location.href="404.html";
+});
+
+});
+
+
+// LOAD ANIMATION
+
+window.addEventListener("load",()=>{
+
+cards.forEach((card,index)=>{
+setTimeout(()=>{
+card.classList.add("show");
+},index*120);
+});
+
+});
+
+
+// QUICK VIEW POPUP
+
+const popup = document.querySelector(".qpPopup");
+const popupImg = document.getElementById("qpPopupImg");
+const popupTitle = document.getElementById("qpPopupTitle");
+const popupDesc = document.getElementById("qpPopupDesc");
+
+document.querySelectorAll(".qpQuickView").forEach(btn=>{
+
+btn.addEventListener("click",(e)=>{
+
+let card = e.target.closest(".qpCard");
+
+popup.style.display="flex";
+
+popupImg.src = card.querySelector("img").src;
+popupTitle.innerText = card.querySelector("h3").innerText;
+popupDesc.innerText = card.querySelector(".qpDesc").innerText;
+
+});
+
+});
+
+
+document.querySelector(".qpClose").onclick = ()=>{
+popup.style.display="none";
+}
+
+window.onclick = function(e){
+if(e.target == popup){
+popup.style.display="none";
+}
+}
+    </script>
+
+
+<section class="gx-parallax-discount">
+
+    <div class="gx-discount-container">
+    
+    <!-- LEFT DISCOUNT -->
+    <div class="gx-discount-card gx-left-card">
+    
+    <div class="gx-discount-img">
+    <img src="dis1.webp" alt="Fresh Vegetables">
+    </div>
+    
+    <div class="gx-discount-content">
+    <h2>50% OFF</h2>
+    <h4>Fresh Vegetables</h4>
+    <p>Get farm fresh vegetables delivered to your home with huge savings.</p>
+    
+    <a href="404.html" class="gx-discount-btn">Shop Now</a>
+    </div>
+    
+    </div>
+    
+    
+    <!-- RIGHT DISCOUNT -->
+    <div class="gx-discount-card gx-right-card">
+    
+    <div class="gx-discount-img">
+    <img src="dis.webp" alt="Healthy Fruits">
+    </div>
+    
+    <div class="gx-discount-content">
+    <h2>40% OFF</h2>
+    <h4>Organic Fruits</h4>
+    <p>Enjoy healthy fruits picked from trusted farms with exclusive discounts.</p>
+    
+    <a href="404.html" class="gx-discount-btn">Shop Now</a>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    </section>
+
+
+    <style>
+        /* SECTION */
+
+.gx-parallax-discount{
+padding:90px 6%;
+background:#f8f8f8;
+font-family:Poppins;
+overflow:hidden;
+}
+
+.gx-discount-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+}
+
+
+/* CARD */
+
+.gx-discount-card{
+position:relative;
+overflow:hidden;
+border-radius:30px;
+height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+opacity:0;
+transition:1s;
+}
+
+
+/* PARALLAX IMAGE */
+
+.gx-discount-img{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.gx-discount-img img{
+width:110%;
+height:110%;
+object-fit:cover;
+transform:scale(1);
+transition:transform 6s ease;
+filter:brightness(0.65);
+}
+
+
+/* HOVER PARALLAX */
+
+.gx-discount-card:hover img{
+transform:scale(1.15);
+}
+
+
+/* CONTENT */
+
+.gx-discount-content{
+text-align:center;
+padding:30px;
+max-width:320px;
+}
+
+.gx-discount-content h2{
+font-size:48px;
+font-weight:700;
+}
+
+.gx-discount-content h4{
+font-size:22px;
+margin:10px 0;
+}
+
+.gx-discount-content p{
+font-size:15px;
+line-height:1.6;
+margin-bottom:18px;
+}
+
+.gx-discount-btn{
+display:inline-block;
+background:#ff6b35;
+color:white;
+padding:10px 22px;
+border-radius:25px;
+text-decoration:none;
+font-size:14px;
+}
+
+
+/* SCROLL ANIMATION */
+
+.gx-left-card{
+transform:translateX(-100px);
+}
+
+.gx-right-card{
+transform:translateX(100px);
+}
+
+.gx-show{
+opacity:1;
+transform:translateX(0);
+}
+
+
+/* TABLET */
+
+@media(max-width:992px){
+
+.gx-discount-container{
+grid-template-columns:1fr;
+}
+
+.gx-discount-card{
+height:350px;
+}
+
+.gx-discount-content h2{
+font-size:36px;
+}
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.gx-discount-card{
+height:300px;
+}
+
+.gx-discount-content h2{
+font-size:30px;
+}
+
+.gx-discount-content h4{
+font-size:18px;
+}
+
+.gx-discount-content p{
+font-size:13px;
+}
+
+}
+    </style>
+
+    <script>
+        const gxCards = document.querySelectorAll(".gx-discount-card");
+
+const gxObserver = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("gx-show");
+}
+});
+},{threshold:0.3});
+
+gxCards.forEach(card=>{
+gxObserver.observe(card);
+});
+
+
+
+/* PARALLAX EFFECT */
+
+window.addEventListener("scroll",()=>{
+
+const scrollY = window.scrollY;
+
+document.querySelectorAll(".gx-discount-img img").forEach(img=>{
+
+img.style.transform = `translateY(${scrollY * 0.05}px) scale(1.1)`;
+
+});
+
+});
+    </script>
+
+    <!-- <footer> -->
+        <footer class="footer">
+            <div class="footer-container">
+        
+                <!-- Logo / About -->
+                <div class="footer-box">
+                    <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+        
+                   
+                    <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+        
+                    <!-- Social Icons -->
+                    <div class="footer-social">
+                        <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+        
+                <!-- Quick Links -->
+                <div class="footer-box">
+                    <h3>Quick Links</h3>
+                    <ul>
+                      <li><a href="./home2.html">Home</a></li>
+                      <li><a href="./about1.html">About</a></li>
+                      <li><a href="./grocery.html">Grocery</a></li>
+                      <li><a href="./contact1.html">contact</a></li>
+                      
+                      
+                    </ul>
+                </div>
+        
+                <!-- Address -->
+                <div class="footer-box">
+                    <h3>Our Address</h3>
+                    <p>
+                        MMR complex.<br>
+                        chinna tirupathi kovil street,<br>
+                        salem,Tamil nadu-636008<br>
+                        <!-- Bengaluru, Karnataka – 560066<br> -->
+                        India<br><br>
+        
+                        <strong>Phone:</strong> +91 98765 43210<br>
+                        <strong>Email:</strong> support@thestackly.com
+                    </p>
+                </div>
+        
+                <!-- Google Map -->
+                <div class="footer-box">
+                    <h3>Location</h3>
+                    <iframe 
+                    src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+        
+            </div>
+        
+            <div class="footer-bottom">
+                <p>© 2025 stackly | All Rights Reserved</p>
+            </div>
+        </footer>
+        
+        
+        
+      
+        
+        <script src="./script.js"></script>      

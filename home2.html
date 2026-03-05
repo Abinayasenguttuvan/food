@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food delivery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style1.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="home2.html  ">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home1</a></li>
+                        <li><a href="./home2.html">Home2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about1.html">About</a></li>
+                <li><a href="./grocery.html">Grocery</a></li>
+                <li><a href="./contact1.html">contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+
+<body>
+
+<section class="hero">
+
+    <!-- BACKGROUND SLIDES -->
+    <div class="hero-slides">
+
+        <div class="slide active" style="background-image:url('./back2.webp')">
+            <div class="hero-content">
+                <h1>Fresh Food Delivered</h1>
+                <p>Order delicious meals from your favourite restaurants</p>
+                <a href="404.html" class="hero-btn">Shop Now</a>
+            </div>
+
+            <img src="./veg1.webp" class="hero-food">
+        </div>
+
+        <div class="slide" style="background-image:url('./back4webp.webp')">
+            <div class="hero-content">
+                <h1>Healthy Organic Meals</h1>
+                <p>Fresh ingredients directly from farms to your table</p>
+                <a href="404.html" class="hero-btn">Shop Now</a>
+            </div>
+
+            <img src="./spice.webp" class="hero-food">
+        </div>
+
+        <div class="slide" style="background-image:url('./back3.webp')">
+            <div class="hero-content">
+                <h1>Hot & Tasty Dishes</h1>
+                <p>Fast delivery with the best quality meals</p>
+                <a href="404.html" class="hero-btn">Shop Now</a>
+            </div>
+
+            <img src="./pizza.webp" class="hero-food">
+        </div>
+
+    </div>
+
+</section>
+<style>
+    
+
+.hero{
+width:100%;
+height:100vh;
+position:relative;
+overflow:hidden;
+}
+
+/* SLIDES */
+
+.hero-slides{
+width:100%;
+height:100%;
+position:relative;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:80px;
+opacity:0;
+transition:opacity 1s ease;
+}
+
+.slide.active{
+opacity:1;
+z-index:1;
+}
+
+/* CONTENT */
+
+.hero-content{
+color:white;
+max-width:500px;
+animation:fadeUp 1.5s ease;
+}
+
+.hero-content h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:18px;
+margin-bottom:25px;
+line-height:1.6;
+}
+
+.hero-btn{
+background:red;
+padding:14px 30px;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.hero-btn:hover{
+background:rgb(32, 53, 1);
+}
+
+/* FLOATING IMAGE */
+
+.hero-food{
+width:500px;
+animation:float 4s ease-in-out infinite;
+}
+
+/* FLOAT ANIMATION */
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+}
+
+/* TEXT ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:1200px){
+
+.hero-content h1{
+font-size:45px;
+}
+
+.hero-food{
+width:420px;
+}
+
+}
+
+@media(max-width:992px){
+
+.slide{
+flex-direction:column;
+justify-content:center;
+text-align:center;
+gap:40px;
+}
+
+.hero-food{
+width:350px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:35px;
+}
+
+.hero-content p{
+font-size:16px;
+}
+
+.hero-food{
+width:280px;
+}
+
+}
+
+@media(max-width:480px){
+
+.hero{
+height:90vh;
+}
+
+.hero-content h1{
+font-size:28px;
+}
+
+.hero-food{
+width:220px;
+}
+
+.hero-btn{
+padding:12px 22px;
+}
+
+}
+</style>
+
+<script>
+    let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function changeSlide(){
+
+slides[index].classList.remove("active");
+
+index++;
+
+if(index >= slides.length){
+index = 0;
+}
+
+slides[index].classList.add("active");
+
+}
+
+setInterval(changeSlide,5000);
+</script>
+
+<section class="fdLoopTicker">
+    <div class="fdLoopTickerWrapper">
+
+        <div class="fdLoopTickerTrack" id="fdLoopTickerTrack">
+
+            <span class="fdLoopTickerItem">🚚 Delivery in 10 mins</span>
+            <span class="fdLoopTickerItem">🔥 Hot & Fresh Meals</span>
+            <span class="fdLoopTickerItem">🥗 Healthy Organic Food</span>
+            <span class="fdLoopTickerItem">🍔 Best Burger Deals</span>
+            <span class="fdLoopTickerItem">🍕 Pizza Offers Today</span>
+            <span class="fdLoopTickerItem">🍟 Free Delivery Today</span>
+            <span class="fdLoopTickerItem">🍗 Crispy Chicken Meals</span>
+            <span class="fdLoopTickerItem">🥤 Combo Meals Available</span>
+
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* ===============================
+   FOOD DELIVERY LOOP TICKER
+================================ */
+
+.fdLoopTicker{
+width:100%;
+background:#ff4d4d;
+overflow:hidden;
+padding:12px 0;
+}
+
+.fdLoopTickerWrapper{
+width:100%;
+overflow:hidden;
+}
+
+.fdLoopTickerTrack{
+display:flex;
+width:max-content;
+gap:60px;
+animation:fdTickerScroll 20s linear infinite;
+}
+
+.fdLoopTickerItem{
+color:white;
+font-size:18px;
+font-weight:600;
+white-space:nowrap;
+}
+
+/* SCROLL ANIMATION */
+
+@keyframes fdTickerScroll{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media(max-width:992px){
+
+.fdLoopTickerTrack{
+gap:40px;
+}
+
+.fdLoopTickerItem{
+font-size:16px;
+}
+
+}
+
+@media(max-width:600px){
+
+.fdLoopTickerItem{
+font-size:14px;
+}
+
+.fdLoopTickerTrack{
+gap:25px;
+}
+
+}
+</style>
+<script>
+
+const fdTicker = document.getElementById("fdLoopTickerTrack");
+
+fdTicker.innerHTML += fdTicker.innerHTML;
+</script>
+
+<section class="fdStoreProSection">
+
+    <!-- TOP -->
+    <div class="fdStoreProTop">
+    
+    <div>
+    <h2 class="fdStoreProTitle">Store</h2>
+    <p class="fdStoreProSub">
+    Select the most suitable for your cart or go directly to the store
+    </p>
+    </div>
+    
+    <a href="404.html" class="fdStoreProBtn">Go to Store</a>
+    
+    </div>
+    
+    
+    <!-- CATEGORY SLIDER -->
+    
+    <div class="fdStoreProSlider" id="fdStoreProSlider">
+    
+    <div class="fdStoreProTrack" id="fdStoreProTrack">
+    
+    <div class="fdStoreProItem" data-category="vegetables">
+    <div class="fdStoreProCircle"><img src="veg1.webp"></div>
+    <p>Vegetables</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="milk">
+    <div class="fdStoreProCircle"><img src="milk.webp"></div>
+    <p>Milk</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="masala">
+    <div class="fdStoreProCircle"><img src="spice.webp"></div>
+    <p>Masala</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="chocolate">
+    <div class="fdStoreProCircle"><img src="chocolate.webp"></div>
+    <p>Chocolate</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="fruits">
+    <div class="fdStoreProCircle"><img src="fruits.webp"></div>
+    <p>Fruits</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="rice">
+    <div class="fdStoreProCircle"><img src="rice.webp"></div>
+    <p>Rice</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="oil">
+    <div class="fdStoreProCircle"><img src="oil.webp"></div>
+    <p>Cooking Oil</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="bakery">
+    <div class="fdStoreProCircle"><img src="bread.webp"></div>
+    <p>Bakery</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="snacks">
+    <div class="fdStoreProCircle"><img src="snacks.webp"></div>
+    <p>Snacks</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="icecream">
+    <div class="fdStoreProCircle"><img src="icecream.webp"></div>
+    <p>Ice Cream</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="beverages">
+    <div class="fdStoreProCircle"><img src="beverages.webp"></div>
+    <p>Beverages</p>
+    </div>
+    
+    <div class="fdStoreProItem" data-category="dryfruits">
+    <div class="fdStoreProCircle"><img src="dryfruits.webp"></div>
+    <p>Dry Fruits</p>
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    
+    
+    <!-- PRODUCTS -->
+    
+    <div class="fdStoreProProducts">
+    
+    <div class="fdProductCard" data-category="vegetables">
+    <img src="veg1.webp">
+    <h4>Fresh Vegetables</h4>
+    </div>
+    
+    <div class="fdProductCard" data-category="milk">
+    <img src="milk.webp">
+    <h4>Organic Milk</h4>
+    </div>
+    
+    <div class="fdProductCard" data-category="fruits">
+    <img src="fruits.webp">
+    <h4>Fresh Fruits</h4>
+    </div>
+    
+    <div class="fdProductCard" data-category="snacks">
+    <img src="snacks.webp">
+    <h4>Crunchy Snacks</h4>
+    </div>
+    
+    <div class="fdProductCard" data-category="bakery">
+    <img src="bread.webp">
+    <h4>Bakery Items</h4>
+    </div>
+    
+    <div class="fdProductCard" data-category="beverages">
+    <img src="beverages.webp">
+    <h4>Cold Beverages</h4>
+    </div>
+    
+    </div>
+    
+    </section>
+
+    <Style>
+        .fdStoreProSection{
+padding:70px 6%;
+font-family:Arial;
+background:#f9f9f9;
+}
+
+.fdStoreProTop{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.fdStoreProTitle{
+font-size:34px;
+font-weight:700;
+}
+
+.fdStoreProSub{
+color:#666;
+margin-top:6px;
+}
+
+.fdStoreProBtn{
+background:rgb(32, 53, 1);
+color:white;
+padding:12px 24px;
+border-radius:25px;
+text-decoration:none;
+font-weight:600;
+}
+
+/* CATEGORY SLIDER */
+
+.fdStoreProSlider{
+overflow:hidden;
+margin-bottom:40px;
+}
+
+.fdStoreProTrack{
+display:flex;
+gap:25px;
+transition:transform .4s;
+}
+
+.fdStoreProItem{
+text-align:center;
+cursor:pointer;
+min-width:110px;
+}
+
+.fdStoreProCircle{
+width:90px;
+height:90px;
+background:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+margin:auto;
+}
+
+.fdStoreProCircle img{
+width:60px;
+height:60px;
+object-fit:contain;
+}
+
+.fdStoreProItem p{
+margin-top:8px;
+font-size:14px;
+font-weight:600;
+}
+
+/* PRODUCTS */
+
+.fdStoreProProducts{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:25px;
+}
+
+.fdProductCard{
+background:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.fdProductCard img{
+width:100%;
+height:120px;
+object-fit:contain;
+}
+
+.fdProductCard:hover{
+transform:translateY(-6px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.fdStoreProCircle{
+width:70px;
+height:70px;
+}
+
+.fdStoreProCircle img{
+width:45px;
+height:45px;
+}
+
+.fdStoreProItem{
+min-width:90px;
+}
+
+}
+    </Style>
+
+    <script>
+        /* AUTO CATEGORY SLIDER */
+
+const track = document.getElementById("fdStoreProTrack");
+
+let position = 0;
+
+function autoSlide(){
+
+position -= 1;
+
+if(Math.abs(position) > track.scrollWidth/2){
+position = 0;
+}
+
+track.style.transform = `translateX(${position}px)`;
+
+}
+
+setInterval(autoSlide,30);
+
+
+
+/* CATEGORY FILTER */
+
+const categories = document.querySelectorAll(".fdStoreProItem");
+const products = document.querySelectorAll(".fdProductCard");
+
+categories.forEach(cat =>{
+
+cat.addEventListener("click", ()=>{
+
+const category = cat.dataset.category;
+
+products.forEach(product =>{
+
+if(product.dataset.category === category){
+
+product.style.display="block";
+
+}else{
+
+product.style.display="none";
+
+}
+
+});
+
+});
+
+});
+    </script>
+
+
+<!-- ===== Glassmorphism Featured Services ===== -->
+
+<section class="fdGlassServiceSection">
+
+    <div class="fdGlassServiceHeader">
+        <h2>Featured <span>Services</span></h2>
+        <p>Here you will get some extra services which you will get only here</p>
+    </div>
+
+    <div class="fdGlassServiceGrid" id="fdGlassServiceGrid">
+
+        <!-- CARD 1 -->
+        <div class="fdGlassServiceCard fdGlassActive">
+            <div class="fdGlassIcon">⏰</div>
+            <h4>Save Time</h4>
+            <p>Save your valuable time with our fast delivery.</p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="fdGlassServiceCard">
+            <div class="fdGlassIcon">🏠</div>
+            <h4>Home Delivery</h4>
+            <p>We deliver products directly to your doorstep.</p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="fdGlassServiceCard">
+            <div class="fdGlassIcon">🕒</div>
+            <h4>24/7 Availability</h4>
+            <p>You can order anytime whenever you want.</p>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="fdGlassServiceCard">
+            <div class="fdGlassIcon">⚖️</div>
+            <h4>Price Comparison</h4>
+            <p>Compare prices easily and choose the best.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+    /* ===== GLASSMORPHISM SERVICES SECTION ===== */
+
+.fdGlassServiceSection{
+padding:90px 6%;
+background:  rgb(32, 53, 1);
+font-family:Arial;
+position:relative;
+overflow:hidden;
+}
+
+/* HEADER */
+
+.fdGlassServiceHeader{
+text-align:center;
+margin-bottom:50px;
+color:white;
+}
+
+.fdGlassServiceHeader h2{
+font-size:36px;
+font-weight:700;
+}
+
+.fdGlassServiceHeader span{
+color:#ffe2e2;
+}
+
+.fdGlassServiceHeader p{
+margin-top:8px;
+opacity:.9;
+}
+
+/* GRID */
+
+.fdGlassServiceGrid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+/* GLASS CARD */
+
+.fdGlassServiceCard{
+padding:35px 25px;
+border-radius:15px;
+text-align:center;
+color:white;
+
+background:rgba(255,255,255,0.15);
+border:1px solid rgba(255,255,255,0.25);
+
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+box-shadow:0 10px 35px rgba(0,0,0,0.2);
+
+transition:.35s;
+cursor:pointer;
+}
+
+/* HOVER EFFECT */
+
+.fdGlassServiceCard:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 15px 45px rgba(0,0,0,0.3);
+}
+
+/* ACTIVE CARD */
+
+.fdGlassActive{
+background:rgba(255,255,255,0.25);
+}
+
+/* ICON */
+
+.fdGlassIcon{
+font-size:42px;
+margin-bottom:15px;
+animation:fdGlassFloat 3s ease-in-out infinite;
+}
+
+/* FLOAT ICON */
+
+@keyframes fdGlassFloat{
+
+0%{transform:translateY(0)}
+
+50%{transform:translateY(-12px)}
+
+100%{transform:translateY(0)}
+
+}
+
+/* TEXT */
+
+.fdGlassServiceCard h4{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.fdGlassServiceCard p{
+font-size:14px;
+line-height:1.5;
+opacity:.9;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1024px){
+
+.fdGlassServiceGrid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.fdGlassServiceGrid{
+grid-template-columns:1fr;
+}
+
+.fdGlassServiceHeader h2{
+font-size:28px;
+}
+
+.fdGlassIcon{
+font-size:36px;
+}
+
+}
+</style>
+
+<script>
+    const fdGlassCards = document.querySelectorAll(".fdGlassServiceCard");
+
+let fdGlassIndex = 0;
+
+function fdGlassAutoActive(){
+
+fdGlassCards.forEach(card=>{
+card.classList.remove("fdGlassActive");
+});
+
+fdGlassCards[fdGlassIndex].classList.add("fdGlassActive");
+
+fdGlassIndex++;
+
+if(fdGlassIndex >= fdGlassCards.length){
+fdGlassIndex = 0;
+}
+
+}
+
+setInterval(fdGlassAutoActive,3000);
+</script>
+
+
+
+
+
+
+<section class="gfpSection">
+
+    <div class="gfpHeader">
+    <h2>Our <span>Products</span></h2>
+    <p>Fresh groceries delivered to your home quickly</p>
+    </div>
+    
+    <!-- CATEGORY FILTER -->
+    <div class="gfpFilter">
+    
+    <button class="gfpBtn active" data-cat="all">All</button>
+    <button class="gfpBtn" data-cat="vegetables">Grocery</button>
+    <!-- <button class="gfpBtn" data-cat="fruits">Fruits</button> -->
+    <button class="gfpBtn" data-cat="dairy">Dairy/snacks</button>
+    <!-- <button class="gfpBtn" data-cat="snacks">Snacks</button> -->
+    <button class="gfpBtn" data-cat="beverages">Beverages/snacks</button>
+    
+    </div>
+    
+    <div class="gfpGrid">
+    
+    <!-- PRODUCT -->
+    <div class="gfpCard" data-cat="vegetables">
+    <div class="gfpBadge">-15%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./bread.webp">
+    <h4>Fresh Tomatoes</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$2.50</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="gfpCard" data-cat="vegetables">
+    <div class="gfpBadge">-10%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./oil.webp">
+    <h4>Organic Carrots</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$1.90</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <!-- <div class="gfpCard" data-cat="fruits">
+    <div class="gfpBadge">-12%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./fruits.webp">
+    <h4>Fresh Apples</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$3.20</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="gfpCard" data-cat="fruits">
+    <div class="gfpBadge">-18%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="fruit2.webp">
+    <h4>Bananas</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$1.80</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+     -->
+    <div class="gfpCard" data-cat="dairy">
+    <div class="gfpBadge">-10%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./milk.webp">
+    <h4>Fresh Milk</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$2.40</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="gfpCard" data-cat="dairy">
+    <div class="gfpBadge">-20%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./chocolate.webp">
+    <h4>Potato Chips</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$1.50</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="gfpCard" data-cat="beverages">
+    <div class="gfpBadge">-10%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./beverages.webp">
+    <h4>Orange Juice</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$2.90</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    </div>
+  
+    <br><br>
+    
+    <div class="gfpGrid">
+    
+    <!-- PRODUCT -->
+    <div class="gfpCard" data-cat="vegetables">
+    <div class="gfpBadge">-15%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./veg1.webp">
+    <h4>Fresh Tomatoes</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$2.50</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="gfpCard" data-cat="vegetables">
+    <div class="gfpBadge">-10%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./fruits.webp">
+    <h4>Organic Carrots</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$1.90</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    
+    
+    <div class="gfpCard" data-cat="dairy">
+    <div class="gfpBadge">-10%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./icecream.webp   ">
+    <h4>Fresh Milk  icecream</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$2.40</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="gfpCard" data-cat="beverages">
+    <div class="gfpBadge">-20%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./dryfruits.webp">
+    <h4>Potato Chips</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$1.50</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    <div class="gfpCard" data-cat="beverages">
+    <div class="gfpBadge">-10%</div>
+    <div class="gfpHeart">❤</div>
+    <img src="./snacks.webp">
+    <h4>Orange Juice</h4>
+    <div class="gfpRating">★★★★★</div>
+    <div class="gfpPriceRow">
+    <span>$2.90</span>
+    <button class="gfpCartBtn">Add to Cart</button>
+    </div>
+    </div>
+    
+    </div>
+    
+    </section>
+
+    <style>
+        .gfpSection{
+padding:80px 5%;
+background:#fafafa;
+font-family:Poppins;
+}
+
+.gfpHeader{
+text-align:center;
+margin-bottom:40px;
+}
+
+.gfpHeader h2{
+font-size:36px;
+}
+
+.gfpHeader span{
+color:#27ae60;
+}
+
+.gfpFilter{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:40px;
+}
+
+.gfpBtn{
+padding:10px 20px;
+border:none;
+background:#eee;
+border-radius:30px;
+cursor:pointer;
+}
+
+.gfpBtn.active{
+background:#27ae60;
+color:white;
+}
+
+.gfpGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.gfpCard{
+background:white;
+border-radius:15px;
+padding:15px;
+text-align:center;
+position:relative;
+transition:.3s;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.gfpCard.hide{
+display:none;
+}
+
+.gfpCard img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.gfpBadge{
+position:absolute;
+top:10px;
+left:10px;
+background:red;
+color:white;
+font-size:12px;
+padding:3px 7px;
+border-radius:6px;
+}
+
+.gfpHeart{
+position:absolute;
+top:10px;
+right:10px;
+cursor:pointer;
+color:#bbb;
+}
+
+.gfpHeart.active{
+color:red;
+}
+
+.gfpPriceRow{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:10px;
+}
+
+.gfpCartBtn{
+background:#27ae60;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.gfpCartBtn:hover{
+background:#219150;
+}
+
+@media(max-width:768px){
+.gfpHeader h2{
+font-size:28px;
+}
+}
+    </style>
+
+<script>
+    // CATEGORY FILTER
+
+const filterButtons = document.querySelectorAll(".gfpBtn");
+const productCards = document.querySelectorAll(".gfpCard");
+
+filterButtons.forEach(button => {
+
+button.addEventListener("click", () => {
+
+filterButtons.forEach(btn => btn.classList.remove("active"));
+button.classList.add("active");
+
+const category = button.getAttribute("data-cat");
+
+productCards.forEach(card => {
+
+if(category === "all" || card.getAttribute("data-cat") === category){
+
+card.classList.remove("hide");
+
+}else{
+
+card.classList.add("hide");
+
+}
+
+});
+
+});
+
+});
+
+
+// WISHLIST HEART
+
+document.querySelectorAll(".gfpHeart").forEach(heart => {
+
+heart.addEventListener("click", () => {
+
+heart.classList.toggle("active");
+
+});
+
+});
+
+
+// ADD TO CART → 404 PAGE
+
+document.querySelectorAll(".gfpCartBtn").forEach(btn => {
+
+btn.addEventListener("click", () => {
+
+window.location.href = "404.html";
+
+});
+
+});
+    </script>
+
+<section class="latest-news">
+
+    <div class="news-header">
+      <h2>Latest News</h2>
+      <p>Stay updated with our healthy grocery tips & fresh arrivals.</p>
+    </div>
+  
+    <div class="news-grid">
+  
+      <div class="news-card zoom-news">
+        <div class="news-img">
+          <img src="./veg1.webp">
+        </div>
+        <div class="news-content">
+          <div class="meta">By Ramamoorthi M | March 26, 2020</div>
+          <h3>Best In Quality vegetables</h3>
+          <p>Discover premium quality vegetables sourced from trusted suppliers to ensure freshness and taste.</p>
+          <a href="./404.html" class="read-btn">Read More</a>
+        </div>
+      </div>
+  
+      <div class="news-card zoom-news">
+        <div class="news-img">
+          <img src="./dryfruits.webp">
+        </div>
+        <div class="news-content">
+          <div class="meta">By Ramamoorthi M | March 25, 2020</div>
+          <h3>Best Way To Eat Dry Fruits And Nuts</h3>
+          <p>Learn how to include nutritious dry fruits and nuts in your daily routine for better health benefits.</p>
+          <a href="./404.html" class="read-btn">Read More</a>
+        </div>
+      </div>
+  
+      <div class="news-card zoom-news">
+        <div class="news-img">
+          <img src="./fruits.webp">
+        </div>
+        <div class="news-content">
+          <div class="meta">By Ramamoorthi M | March 22, 2020</div>
+          <h3>Fruits & Vegetable Nutrients For Your Health</h3>
+          <p>Explore the essential vitamins and nutrients found in fresh fruits and vegetables.</p>
+          <a href="./404.html" class="read-btn">Read More</a>
+        </div>
+      </div>
+  
+    </div>
+  
+  </section>
+
+
+  <style>
+    /* ===== LATEST NEWS SECTION ===== */
+
+.latest-news{
+padding:80px 6%;
+background:#f9f9f9;
+font-family: 'Poppins', sans-serif;
+}
+
+/* HEADER */
+
+.news-header{
+text-align:center;
+margin-bottom:50px;
+}
+
+.news-header h2{
+font-size:36px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.news-header p{
+color:#666;
+font-size:16px;
+}
+
+/* GRID */
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+/* CARD */
+
+.news-card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+/* IMAGE */
+
+.news-img{
+overflow:hidden;
+}
+
+.news-img img{
+width:100%;
+height:220px;
+object-fit:cover;
+transition:0.6s;
+}
+
+/* IMAGE ZOOM */
+
+.news-card:hover img{
+transform:scale(1.1);
+}
+
+/* CONTENT */
+
+.news-content{
+padding:20px;
+}
+
+.meta{
+font-size:13px;
+color:#999;
+margin-bottom:8px;
+}
+
+.news-content h3{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.news-content p{
+font-size:14px;
+color:#555;
+line-height:1.6;
+margin-bottom:15px;
+}
+
+/* BUTTON */
+
+.read-btn{
+display:inline-block;
+padding:8px 18px;
+background:#27ae60;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-size:14px;
+transition:0.3s;
+}
+
+.read-btn:hover{
+background:#1e8e4f;
+}
+
+/* SCROLL SHOW */
+
+.news-card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+
+@media(max-width:992px){
+
+.news-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.news-header h2{
+font-size:30px;
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.news-grid{
+grid-template-columns:1fr;
+}
+
+.news-header h2{
+font-size:26px;
+}
+
+.news-content h3{
+font-size:18px;
+}
+
+}
+  </style>
+
+  <script>
+    // SCROLL REVEAL ANIMATION
+
+const newsCards = document.querySelectorAll(".news-card");
+
+const newsObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach((entry,index)=>{
+
+if(entry.isIntersecting){
+
+setTimeout(()=>{
+entry.target.classList.add("show");
+}, index * 200); // cards appear one by one
+
+}
+
+});
+
+},{threshold:0.2});
+
+newsCards.forEach(card=>{
+newsObserver.observe(card);
+});
+  </script>
+
+
+<section class="groceryHeroSection">
+
+    <div class="groceryHeroContainer">
+    
+    <!-- TEXT AREA -->
+    <div class="groceryHeroContent reveal-left">
+    
+    <h1 class="groceryHeroTitle">
+    Your One Stop <br>
+    Marketplace For <br>
+    Quality Groceries
+    </h1>
+    
+    <p class="groceryHeroText">
+    Buy fresh vegetables, fruits, dairy products and daily essentials directly
+    from trusted farmers and suppliers.
+    </p>
+    
+    <p class="groceryHeroText">
+    Enjoy healthy living with premium groceries delivered to your doorstep.
+    </p>
+    
+    <a href="./404.html" class="groceryHeroBtn">Discover Now</a>
+    
+    </div>
+    
+    <!-- IMAGE AREA -->
+    <div class="groceryHeroImage reveal-right">
+    
+    <img src="./family.webp" alt="Grocery Family">
+    
+    </div>
+    
+    </div>
+    
+    </section>
+
+    <style>
+        /* SECTION */
+
+.groceryHeroSection{
+width:100%;
+padding:80px 6%;
+background:#f7faf7;
+font-family:Poppins, sans-serif;
+}
+
+/* CONTAINER */
+
+.groceryHeroContainer{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
+flex-wrap:wrap;
+}
+
+/* TEXT */
+
+.groceryHeroContent{
+flex:1;
+min-width:280px;
+}
+
+.groceryHeroTitle{
+font-size:44px;
+line-height:1.2;
+margin-bottom:20px;
+font-weight:700;
+color:#222;
+}
+
+.groceryHeroText{
+font-size:16px;
+color:#666;
+margin-bottom:12px;
+line-height:1.6;
+}
+
+/* BUTTON */
+
+.groceryHeroBtn{
+display:inline-block;
+margin-top:20px;
+padding:12px 26px;
+background:#2ecc71;
+color:#fff;
+text-decoration:none;
+border-radius:30px;
+font-size:15px;
+transition:0.3s;
+}
+
+.groceryHeroBtn:hover{
+background:#27ae60;
+}
+
+/* IMAGE */
+
+.groceryHeroImage{
+flex:1;
+text-align:center;
+min-width:280px;
+}
+
+.groceryHeroImage img{
+width:100%;
+max-width:500px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* ANIMATION INITIAL */
+
+.reveal-left,
+.reveal-right{
+opacity:0;
+transform:translateY(40px);
+transition:0.8s ease;
+}
+
+/* SHOW */
+
+.showReveal{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+
+@media (max-width:992px){
+
+.groceryHeroTitle{
+font-size:36px;
+}
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+.groceryHeroContainer{
+flex-direction:column;
+text-align:center;
+}
+
+.groceryHeroTitle{
+font-size:30px;
+}
+
+.groceryHeroText{
+font-size:15px;
+}
+
+.groceryHeroImage img{
+max-width:350px;
+}
+
+}
+    </style>
+
+    <script>
+        // SCROLL REVEAL
+
+const revealElements = document.querySelectorAll(".reveal-left, .reveal-right");
+
+const revealObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("showReveal");
+}
+
+});
+
+},{threshold:0.2});
+
+revealElements.forEach(el=>{
+revealObserver.observe(el);
+});
+    </script>
+
+
+<section class="gpScrollSection">
+
+    <div class="gpScrollWrapper">
+    
+    <!-- LEFT IMAGE -->
+    <div class="gpScrollImage">
+    <img src="./veg1.webp" alt="Fresh Groceries">
+    </div>
+    
+    <!-- CENTER CONTENT -->
+    <div class="gpScrollTextArea">
+    
+    <div class="gpStickyBox">
+    
+    <span class="gpScrollTag">Exclusive Discount</span>
+    
+    <h2 class="gpScrollHeading">
+    Discover a smarter way to shop everyday essentials
+    and quality grocery products online.
+    </h2>
+    
+    <p class="gpScrollParagraph">
+    Browse carefully selected fruits, vegetables, dairy and
+    household essentials designed for modern lifestyles,
+    making grocery shopping faster and easier.
+    </p>
+    
+    </div>
+    
+    </div>
+    
+    <!-- RIGHT IMAGE -->
+    <div class="gpScrollImage">
+    <img src="./family.webp" alt="Grocery Shopping">
+    </div>
+    
+    </div>
+    
+    </section>
+
+    <style>
+        /* SECTION */
+
+.gpScrollSection{
+width:100%;
+padding:80px 6%;
+background: rgb(221, 235, 221);
+font-family:'Poppins',sans-serif;
+}
+
+/* WRAPPER */
+
+.gpScrollWrapper{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+/* IMAGES */
+
+.gpScrollImage img{
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* TEXT COLUMN */
+
+.gpScrollTextArea{
+display:flex;
+justify-content:center;
+}
+
+/* STICKY CONTENT */
+
+.gpStickyBox{
+position:sticky;
+top:120px;
+text-align:center;
+max-width:420px;
+}
+
+/* TAG */
+
+.gpScrollTag{
+display:inline-block;
+background:#27ae60;
+color:white;
+padding:6px 16px;
+border-radius:20px;
+font-size:13px;
+margin-bottom:18px;
+}
+
+/* HEADING */
+
+.gpScrollHeading{
+font-size:30px;
+line-height:1.3;
+margin-bottom:18px;
+color:#222;
+}
+
+/* TEXT */
+
+.gpScrollParagraph{
+font-size:15px;
+color:#666;
+line-height:1.7;
+}
+
+/* ===== TABLET ===== */
+
+@media(max-width:992px){
+
+.gpScrollWrapper{
+grid-template-columns:1fr 1fr;
+}
+
+.gpScrollTextArea{
+grid-column:1/3;
+order:-1;
+}
+
+.gpScrollHeading{
+font-size:26px;
+}
+
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:600px){
+
+.gpScrollWrapper{
+grid-template-columns:1fr;
+gap:30px;
+text-align:center;
+}
+
+.gpStickyBox{
+position:relative;
+top:0;
+}
+
+.gpScrollHeading{
+font-size:22px;
+}
+
+.gpScrollParagraph{
+font-size:14px;
+}
+
+}
+.gpScrollImage,
+.gpStickyBox{
+opacity:0;
+transform:translateY(40px);
+transition:0.7s;
+}
+
+.gpShow{
+opacity:1;
+transform:translateY(0);
+}
+    </style>
+
+    <script>
+        const gpElements = document.querySelectorAll(".gpScrollImage, .gpStickyBox");
+
+const gpObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("gpShow");
+}
+});
+},{threshold:0.2});
+
+gpElements.forEach(el=>{
+gpObserver.observe(el);
+});
+    </script>
+
+
+<section class="fdxDeliverySection">
+
+    <div class="fdxDeliveryWrapper">
+    
+    <!-- SPEED LINES -->
+    <!-- <div class="fdxSpeedLines">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+     -->
+    <!-- VAN -->
+    <div class="fdxVanArea fdxReveal">
+    <img src="van.webp" alt="Delivery Van">
+    </div>
+    
+    <!-- TEXT -->
+    <div class="fdxDeliveryText fdxReveal">
+    
+    <h2>
+    Groceries Delivered in
+    <span class="fdxHighlight">10 Minutes</span>
+    </h2>
+    
+    <p>Fast • Fresh • Delivered to your doorstep</p>
+    
+    <a href="./404.html" class="fdxOrderBtn">Order Now</a>
+    
+    </div>
+    
+    <!-- DELIVERY PERSON -->
+    <div class="fdxDeliveryPerson fdxReveal">
+    <img src="./family.webp" alt="Delivery Girl">
+    </div>
+    
+    </div>
+    
+    </section>
+
+    <style>
+        /* SECTION */
+
+.fdxDeliverySection{
+width:100%;
+padding:80px 6%;
+background:#f7faf7;
+font-family:Poppins,sans-serif;
+overflow:hidden;
+}
+
+/* WRAPPER */
+
+.fdxDeliveryWrapper{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
+position:relative;
+flex-wrap:wrap;
+}
+
+/* SPEED LINES */
+
+.fdxSpeedLines{
+position:absolute;
+left:0;
+top:50%;
+width:100%;
+pointer-events:none;
+}
+
+.fdxSpeedLines span{
+display:block;
+height:3px;
+background:#27ae60;
+margin:10px 0;
+opacity:0.4;
+animation:fdxSpeed 1.5s linear infinite;
+}
+
+.fdxSpeedLines span:nth-child(2){width:60%;animation-delay:.2s}
+.fdxSpeedLines span:nth-child(3){width:80%;animation-delay:.4s}
+.fdxSpeedLines span:nth-child(4){width:50%;animation-delay:.6s}
+.fdxSpeedLines span:nth-child(5){width:70%;animation-delay:.8s}
+
+/* SPEED ANIMATION */
+
+@keyframes fdxSpeed{
+0%{
+transform:translateX(-100%);
+opacity:0;
+}
+50%{
+opacity:0.6;
+}
+100%{
+transform:translateX(100%);
+opacity:0;
+}
+}
+
+/* VAN */
+
+.fdxVanArea{
+flex:1;
+text-align:center;
+animation:fdxVanMove 3s ease-in-out infinite;
+}
+
+.fdxVanArea img{
+width:100%;
+max-width:280px;
+}
+
+/* VAN FLOAT */
+
+@keyframes fdxVanMove{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+/* TEXT */
+
+.fdxDeliveryText{
+flex:1;
+text-align:center;
+min-width:260px;
+}
+
+.fdxDeliveryText h2{
+font-size:34px;
+margin-bottom:10px;
+color:#222;
+}
+
+.fdxDeliveryText p{
+font-size:16px;
+color:#666;
+margin-bottom:20px;
+}
+
+/* HIGHLIGHT */
+
+.fdxHighlight{
+color:#27ae60;
+font-weight:700;
+animation:fdxPulse 2s infinite;
+}
+
+@keyframes fdxPulse{
+0%{opacity:1}
+50%{opacity:.6}
+100%{opacity:1}
+}
+
+/* BUTTON */
+
+.fdxOrderBtn{
+display:inline-block;
+padding:12px 28px;
+background:#27ae60;
+color:white;
+border-radius:30px;
+text-decoration:none;
+font-size:15px;
+transition:.3s;
+}
+
+.fdxOrderBtn:hover{
+background:#1e8e4f;
+}
+
+/* DELIVERY PERSON */
+
+.fdxDeliveryPerson{
+flex:1;
+text-align:center;
+}
+
+.fdxDeliveryPerson img{
+width:100%;
+max-width:260px;
+}
+
+/* SCROLL REVEAL */
+
+.fdxReveal{
+opacity:0;
+transform:translateY(40px);
+transition:.7s;
+}
+
+.fdxShow{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+
+@media(max-width:992px){
+
+.fdxDeliveryText h2{
+font-size:28px;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.fdxDeliveryWrapper{
+flex-direction:column;
+gap:30px;
+text-align:center;
+}
+
+.fdxDeliveryText h2{
+font-size:22px;
+}
+
+.fdxDeliveryText p{
+font-size:14px;
+}
+
+.fdxVanArea img{
+max-width:200px;
+}
+
+.fdxDeliveryPerson img{
+max-width:200px;
+}
+
+.fdxSpeedLines{
+display:none;
+}
+
+}
+    </style>
+    <script>
+        const fdxItems = document.querySelectorAll(".fdxReveal");
+
+const fdxObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("fdxShow");
+}
+});
+},{threshold:0.2});
+
+fdxItems.forEach(el=>{
+fdxObserver.observe(el);
+});
+    </script>
+<!-- <footer> -->
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Logo / About -->
+            <div class="footer-box">
+                <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+    
+               
+                <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+    
+                <!-- Social Icons -->
+                <div class="footer-social">
+                    <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="./home2.html">Home</a></li>
+                  <li><a href="./about1.html">About</a></li>
+                  <li><a href="./grocery.html">Grocery</a></li>
+                  <li><a href="./contact1.html">contact</a></li>
+                  
+                  
+                </ul>
+            </div>
+    
+            <!-- Address -->
+            <div class="footer-box">
+                <h3>Our Address</h3>
+                <p>
+                    MMR complex.<br>
+                    chinna tirupathi kovil street,<br>
+                    salem,Tamil nadu-636008<br>
+                    <!-- Bengaluru, Karnataka – 560066<br> -->
+                    India<br><br>
+    
+                    <strong>Phone:</strong> +91 98765 43210<br>
+                    <strong>Email:</strong> support@thestackly.com
+                </p>
+            </div>
+    
+            <!-- Google Map -->
+            <div class="footer-box">
+                <h3>Location</h3>
+                <iframe 
+                src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+            <p>© 2025 stackly | All Rights Reserved</p>
+        </div>
+    </footer>
+    
+    
+    
+  
+    
+    <script src="./script.js"></script>  
+</html>
