@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food delivery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="index.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./order.html">order</a></li>
+                <li><a href="./contact.html">contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./signup.html">Signup</a></li>
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+    <style>
+/* ===== GLOBAL ===== */
+body{
+    margin:0; font-family:'Poppins',sans-serif; background:#f8fdf8;
+}
+
+/* ===== HERO SECTION ===== */
+.fdHero{
+    position:relative; height:500px; display:flex; align-items:center; justify-content:center; text-align:center; border-radius:20px; overflow:hidden;
+    background-image:url("burger.webp"); background-size:cover; background-position:center;
+}
+.fdHeroOverlay{
+    position:absolute; inset:0; background:rgba(0,0,0,0.5);
+}
+.fdHeroContent{
+    position:relative; z-index:2; max-width:700px; padding:0 20px;
+}
+.fdHeroContent h1{
+    font-size:60px; color:#fff; margin-bottom:20px;
+}
+.fdHeroContent p{
+    font-size:18px; color:#ddd; margin-bottom:30px; line-height:1.6;
+}
+.fdHeroButtons{
+    display:flex; gap:20px; justify-content:center; flex-wrap:wrap;
+}
+.fdStoreBtn{
+    padding:14px 30px; background:#000; color:#fff; border-radius:8px; text-decoration:none; font-size:14px; transition:0.3s;
+}
+.fdStoreBtn.google{ background:#d32f2f; }
+.fdStoreBtn:hover{ transform:translateY(-4px); }
+@media(max-width:768px){ .fdHero h1{ font-size:38px; } .fdHero{ height:400px; } }
+
+/* ===== CATEGORY FILTER ===== */
+.fdCategoryFilter{
+    display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin:50px 0 30px 0;
+}
+.fdCategoryBtn{
+    padding:12px 28px; background:#1b5e20; color:#fff; border:none; border-radius:30px; cursor:pointer; font-weight:600; transition:0.3s;
+}
+.fdCategoryBtn.active, .fdCategoryBtn:hover{ background:#2e7d32; }
+
+/* ===== FOOD GRID ===== */
+.fdFoodSection{ padding:0 8%; margin-bottom:100px; }
+.fdFoodGrid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px;
+}
+
+/* FOOD CARD */
+.fdFoodCard{
+    position:relative; background:#fff; padding:20px; border-radius:25px; box-shadow:0 20px 40px rgba(0,0,0,0.08); text-align:center;
+    opacity:0; transform:translateY(50px); transition:all 0.8s ease;
+}
+.fdFoodCard.show{ opacity:1; transform:translateY(0); }
+
+.fdFoodCard img{
+    width:100%; height:220px; object-fit:cover; border-radius:30% 30% 30% 30%; margin-bottom:15px;
+    animation:floatFood 4s ease-in-out infinite;
+    transition:0.5s;
+}
+.fdFoodCard img:hover{ transform:scale(1.1); }
+
+@keyframes floatFood{
+    0%,100%{ transform:translateY(0px); }
+    50%{ transform:translateY(-10px); }
+}
+
+.fdFoodBadge{
+    position:absolute; top:15px; left:15px; background:#d32f2f; color:#fff; padding:6px 14px; border-radius:20px; font-weight:600;
+}
+.fdFoodHeart{
+    position:absolute; top:15px; right:15px; font-size:22px; color:#ccc; cursor:pointer; transition:0.3s;
+}
+.fdFoodHeart.active{ color:red; transform:scale(1.2); }
+
+.fdFoodCard h4{ font-size:20px; margin-bottom:10px; color:#333; }
+.fdFoodRating{ color:#ff9800; font-size:16px; margin-bottom:10px; }
+.fdPriceRow{ display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
+.fdPriceRow span{ font-size:18px; font-weight:700; color:#d32f2f; }
+.fdAddCartBtn{
+    background:#d32f2f; color:#fff; border:none; padding:8px 22px; border-radius:20px; cursor:pointer; transition:0.3s;
+}
+.fdAddCartBtn:hover{ background:#b71c1c; transform:scale(1.05); }
+
+/* RESPONSIVE */
+@media(max-width:1200px){ .fdFoodGrid{ gap:30px; } }
+@media(max-width:992px){ .fdFoodGrid{ gap:25px; } }
+@media(max-width:768px){ .fdFoodGrid{ grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); } .fdFoodCard img{ height:180px; } }
+@media(max-width:480px){ .fdHeroContent h1{ font-size:28px; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="fdHero">
+    <div class="fdHeroOverlay"></div>
+    <div class="fdHeroContent">
+        <h1>ORDER DELICIOUS FOOD</h1>
+        <p>Fresh meals delivered hot & fast. Enjoy your favorites anytime.</p>
+        <div class="fdHeroButtons">
+            <a href="./404.html" class="fdStoreBtn">App Store</a>
+            <a href="./404.html" class="fdStoreBtn google">Google Play</a>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORY FILTER -->
+<div class="fdCategoryFilter">
+    <button class="fdCategoryBtn active" data-category="all">All</button>
+    <button class="fdCategoryBtn" data-category="veg">Veg</button>
+    <button class="fdCategoryBtn" data-category="nonveg">Non-Veg</button>
+    <button class="fdCategoryBtn" data-category="dessert">Dessert</button>
+    <button class="fdCategoryBtn" data-category="kids">Kids</button>
+</div>
+
+<!-- FOOD GRID -->
+<section class="fdFoodSection">
+    <div class="fdFoodGrid">
+
+        <!-- VEG -->
+        <div class="fdFoodCard" data-category="veg">
+            <div class="fdFoodBadge">-20%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./noodles.webp" alt="">
+            <h4>Fresh veg noodles</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$5.99</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="veg">
+            <div class="fdFoodBadge">-15%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./pizza.webp" alt="">
+            <h4>Veg Pizza</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$7.50</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="veg">
+            <div class="fdFoodBadge">-18%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./burger.webp" alt="">
+            <h4>veg burger</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$6.50</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- NON-VEG -->
+        <div class="fdFoodCard" data-category="nonveg">
+            <div class="fdFoodBadge">-22%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./biryani.webp" alt="">
+            <h4> Chicken biryani</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$8.99</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="nonveg">
+            <div class="fdFoodBadge">-15%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="burger.webp" alt="">
+            <h4>Cheese Burger</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$6.99</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="nonveg">
+            <div class="fdFoodBadge">-12%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./chinese.webp" alt="">
+            <h4>Chinese cucci</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$9.99</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- DESSERT -->
+        <div class="fdFoodCard" data-category="dessert">
+            <div class="fdFoodBadge">-10%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./dessert.webp" alt="">
+            <h4>Chocolate Cake</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$4.99</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="dessert">
+            <div class="fdFoodBadge">-12%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./coffee.webp" alt="">
+            <h4>cold Coffee</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$4.50</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="dessert">
+            <div class="fdFoodBadge">-15%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./north.webp" alt="">
+            <h4>sweet paratha</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$3.99</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- KIDS -->
+        <div class="fdFoodCard" data-category="kids">
+            <div class="fdFoodBadge">-12%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./dessert.webp" alt="">
+            <h4>Kids fav </h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$3.50</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="kids">
+            <div class="fdFoodBadge">-10%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./chinese.webp" alt="">
+            <h4>Cuucci</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$5.20</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="fdFoodCard" data-category="kids">
+            <div class="fdFoodBadge">-15%</div>
+            <div class="fdFoodHeart">❤</div>
+            <img src="./pizza.webp" alt="">
+            <h4>Mini Pizza</h4>
+            <div class="fdFoodRating">★★★★★</div>
+            <div class="fdPriceRow">
+                <span>$4.80</span>
+                <button class="fdAddCartBtn">Add to Cart</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+// Animate cards on scroll
+const fdCards = document.querySelectorAll('.fdFoodCard');
+const fdObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('show');
+    });
+},{threshold:0.2});
+fdCards.forEach(card=>fdObserver.observe(card));
+
+// Heart toggle
+document.querySelectorAll('.fdFoodHeart').forEach(h=>{
+    h.addEventListener('click', ()=>h.classList.toggle('active'));
+});
+
+// Add to Cart redirect to 404
+document.querySelectorAll('.fdAddCartBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        alert("Item added to cart 🛒");
+        window.location.href="/404.html";
+    });
+});
+
+// Category filter
+const categoryBtns = document.querySelectorAll('.fdCategoryBtn');
+categoryBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        categoryBtns.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+        fdCards.forEach(card=>{
+            if(category==='all' || card.dataset.category===category){
+                card.style.display='block';
+                setTimeout(()=>card.classList.add('show'),100);
+            }else{
+                card.style.display='none';
+                card.classList.remove('show');
+            }
+        });
+    });
+});
+
+</script>
+
+
+
+
+<section class="customer-section">
+
+    <!-- LEFT: CUSTOMER REVIEWS -->
+    <div class="customer-left">
+      <div class="customer-slide active">
+        <div class="customer-info">
+          <img src="./sana.webp" alt="Customer 1">
+          <div class="customer-details">
+            <h4>Emily R.</h4>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="customer-text">"Amazing app! Hot and fresh food every time. Highly recommend!"</p>
+      </div>
+  
+      <div class="customer-slide">
+        <div class="customer-info">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer 2">
+          <div class="customer-details">
+            <h4>Michael S.</h4>
+            <div class="stars">★★★★☆</div>
+          </div>
+        </div>
+        <p class="customer-text">"Easy interface and fast delivery. The discounts are a bonus."</p>
+      </div>
+  
+      <div class="customer-slide">
+        <div class="customer-info">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer 3">
+          <div class="customer-details">
+            <h4>Sophia L.</h4>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="customer-text">"Tracking orders is easy. Customer service is fantastic!"</p>
+      </div>
+    </div>
+  
+    <!-- RIGHT: APP DOWNLOAD -->
+    <div class="customer-right">
+      <h2>Download Our App</h2>
+      <p>Experience the fastest food delivery. Available on iOS and Android.</p>
+      <div class="app-buttons">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store">
+      </div>
+    </div>
+  
+  </section>
+  
+  <style>
+  /* SECTION LAYOUT */
+  .customer-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 80px 20px;
+    justify-content: center;
+    background: white;
+  }
+  
+  /* LEFT SIDE: REVIEWS */
+  .customer-left {
+    flex: 1 1 500px;
+    max-width: 600px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .customer-slide {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .customer-slide.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .customer-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .customer-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff6b6b;
+  }
+  
+  .customer-details h4 {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .customer-details .stars {
+    color: #f6b93b;
+  }
+  
+  .customer-text {
+    margin-left: 80px;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* RIGHT SIDE: APP DOWNLOAD */
+  .customer-right {
+    flex: 1 1 300px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .customer-right.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .customer-right h2 {
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .customer-right p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .app-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .app-buttons img {
+    width: 140px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .app-buttons img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .customer-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    .customer-text {
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .customer-info img {
+      width: 50px;
+      height: 50px;
+    }
+    .customer-right h2 {
+      font-size: 1.5rem;
+    }
+    .app-buttons img {
+      width: 120px;
+    }
+  }
+  
+  /* Fix for customer-right visibility */
+  .customer-right {
+    flex: 1 1 300px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    opacity: 1;            /* make visible by default */
+    transform: translateY(0); /* no translate on load */
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  </style>
+  
+  <script>
+  
+    // Trigger observer immediately on load
+  const rightSide = document.querySelector('.customer-right');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting || window.scrollY === 0){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  observer.observe(rightSide);
+  // AUTOMATIC REVIEW SLIDER
+  let reviews = document.querySelectorAll('.customer-slide');
+  let currentReview = 0;
+  
+  function nextReview() {
+    reviews[currentReview].classList.remove('active');
+    currentReview = (currentReview + 1) % reviews.length;
+    reviews[currentReview].classList.add('active');
+  }
+  
+  setInterval(nextReview, 4000);
+  
+  // SCROLL ANIMATION FOR RIGHT SIDE
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  observer.observe(document.querySelector('.customer-right'));
+  </script>
+    
+  
+  <!-- <footer> -->
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Logo / About -->
+            <div class="footer-box">
+                <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+    
+               
+                <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+    
+                <!-- Social Icons -->
+                <div class="footer-social">
+                    <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="./index.html">Home</a></li>
+                  <li><a href="./about.html">About</a></li>
+                  <li><a href="./order.html">order</a></li>
+                  <li><a href="./contact.html">contact</a></li>
+                  <li><a href="./dashboard.html">Dashboard</a></li>
+                  <li><a href="./login.html">Login</a></li>
+                  <li><a href="./signup.html">Signup</a></li>
+                  
+                </ul>
+            </div>
+    
+            <!-- Address -->
+            <div class="footer-box">
+                <h3>Our Address</h3>
+                <p>
+                    MMR complex.<br>
+                    chinna tirupathi kovil street,<br>
+                    salem,Tamil nadu-636008<br>
+                    <!-- Bengaluru, Karnataka – 560066<br> -->
+                    India<br><br>
+    
+                    <strong>Phone:</strong> +91 98765 43210<br>
+                    <strong>Email:</strong> support@thestackly.com
+                </p>
+            </div>
+    
+            <!-- Google Map -->
+            <div class="footer-box">
+                <h3>Location</h3>
+                <iframe 
+                src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+            <p>© 2025 stackly | All Rights Reserved</p>
+        </div>
+    </footer>
+    
+    
+    
+</body>
+</html>

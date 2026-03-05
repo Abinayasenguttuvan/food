@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food delivery</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <a href="index.html">   
+            <img src="./white.webp" alt="Stackly Logo" style="height: 60px; ">
+          </a> 
+        <!-- div class="logo">Tech<span>Solutions</span></div> -->
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links" >
+
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn">Home <i class="fa-solid fa-caret-down"></i></a>
+                
+                    <ul class="dropdown-content">
+                        <li><a href="./index.html">Home 1</a></li>
+                        <li><a href="./home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                
+
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./order.html">order</a></li>
+                <li><a href="./contact.html">contact</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./signup.html">Signup</a></li>
+                
+
+            </ul>
+        </nav>
+
+        <!-- Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </header>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#f9f9f9;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-about{
+    position:relative;
+    width:100%;
+    min-height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+    color:#fff;
+    text-align:center;
+    background: url('./back2.webp') center/cover no-repeat;
+}
+
+.hero-about h1{
+    font-size:2.8rem;
+    margin-bottom:20px;
+    z-index:2;
+    position:relative;
+}
+
+.hero-about p{
+    font-size:1.1rem;
+    max-width:700px;
+    line-height:1.6;
+    z-index:2;
+    position:relative;
+}
+
+/* Floating image on hero */
+.hero-about img.floating{
+    position:absolute;
+    width:300px;
+    top:30%;
+    right:10%;
+    z-index:1;
+    animation: float 6s ease-in-out infinite;
+    border-radius:15px;
+}
+
+/* Floating animation */
+@keyframes float{
+    0%{transform: translateY(0px);}
+    50%{transform: translateY(-15px);}
+    100%{transform: translateY(0px);}
+}
+
+/* ===== MAP LAYOUT ===== */
+.map-container{
+    position:relative;
+    width:90%;
+    max-width:1200px;
+    height:500px;
+    margin:50px auto 100px auto;
+    border-radius:20px;
+    background-color:#e0e0e0;
+    background-image:
+        linear-gradient(to right, #cfcfcf 1px, transparent 1px),
+        linear-gradient(to bottom, #cfcfcf 1px, transparent 1px);
+    background-size:50px 50px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* MAP ICON PINS */
+.map-pin{
+    position:absolute;
+    background:#fff;
+    color:#ff7e5f;
+    border-radius:50%;
+    width:90px;
+    height:90px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor:pointer;
+}
+
+.map-pin i{
+    font-size:2rem;
+    margin-bottom:5px;
+}
+
+.map-pin h4{
+    font-size:0.9rem;
+    margin:0;
+    font-weight:600;
+}
+
+.map-pin p{
+    font-size:0.75rem;
+    color:#555;
+    margin-top:3px;
+}
+
+/* Hover effect */
+.map-pin:hover{
+    transform: translateY(-10px) scale(1.1);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Positions for pins (desktop) */
+.food{ top:20%; left:15%; }
+.dineout{ top:35%; left:75%; }
+.grocery{ top:65%; left:20%; }
+.twentyfour{ top:50%; left:50%; }
+.homedelivery{ top:80%; left:70%; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1200px){
+    .map-container{
+        height:450px;
+    }
+    .hero-about img.floating{
+        width:250px;
+        top:25%;
+        right:5%;
+    }
+}
+
+@media(max-width:992px){
+    .hero-about h1{
+        font-size:2.5rem;
+    }
+    .hero-about p{
+        font-size:1rem;
+    }
+    .map-container{
+        height:400px;
+    }
+    .map-pin{
+        width:80px;
+        height:80px;
+    }
+    .hero-about img.floating{
+        width:220px;
+    }
+}
+
+@media(max-width:768px){
+    .hero-about h1{
+        font-size:2.2rem;
+    }
+    .hero-about p{
+        font-size:0.95rem;
+    }
+    .map-container{
+        height:350px;
+    }
+    .map-pin{
+        width:70px;
+        height:70px;
+    }
+    .map-pin i{
+        font-size:1.7rem;
+    }
+    .hero-about img.floating{
+        width:180px;
+        top:20%;
+        right:5%;
+    }
+}
+
+@media(max-width:480px){
+    .hero-about h1{
+        font-size:1.8rem;
+    }
+    .hero-about p{
+        font-size:0.9rem;
+    }
+    .map-container{
+        height:300px;
+    }
+    .map-pin{
+        width:60px;
+        height:60px;
+        padding:5px;
+    }
+    .map-pin i{
+        font-size:1.5rem;
+    }
+    .map-pin h4{
+        font-size:0.75rem;
+    }
+    .map-pin p{
+        font-size:0.6rem;
+    }
+    .hero-about img.floating{
+        width:140px;
+        top:15%;
+        right:5%;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-about">
+    <h1>About Us</h1>
+    <p>We are your trusted partner for delicious food, groceries, and 24/7 home delivery. Whether you want to dine out, order in, or shop groceries, we make your life easier and tastier. Serving happiness, one order at a time!</p>
+    <!-- Floating image -->
+    <img src="./pizza.webp" alt="Food Floating" class="floating">
+</section>
+
+<!-- ===== MAP ICON REPRESENTATION ===== -->
+<div class="map-container">
+    <div class="map-pin food">
+        <i class="fas fa-utensils"></i>
+        <h4>Food</h4>
+        <p>Hot & fresh meals delivered</p>
+    </div>
+    <div class="map-pin dineout">
+        <i class="fas fa-store"></i>
+        <h4>Dine Out</h4>
+        <p>Discover the best restaurants</p>
+    </div>
+    <div class="map-pin grocery">
+        <i class="fas fa-shopping-basket"></i>
+        <h4>Grocery</h4>
+        <p>Fresh groceries at your doorstep</p>
+    </div>
+    <div class="map-pin twentyfour">
+        <i class="fas fa-clock"></i>
+        <h4>24/7</h4>
+        <p>Service anytime, day or night</p>
+    </div>
+    <div class="map-pin homedelivery">
+        <i class="fas fa-home"></i>
+        <h4>Home Delivery</h4>
+        <p>Fast & reliable delivery</p>
+    </div>
+</div>
+
+
+<style>
+
+  .cooking-section{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:60px 10%;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+
+  /* VIDEO */
+  .cooking-video{
+    flex:1 1 500px;
+    max-width:600px;
+    opacity:0;
+    transform:translateX(-50px);
+    transition: all 1s ease-out;
+  }
+
+  .cooking-video.visible{
+    opacity:1;
+    transform:translateX(0);
+  }
+
+  .cooking-video video{
+    width:100%;
+    border-radius:15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+
+  /* CONTENT */
+  .cooking-content{
+    flex:1 1 400px;
+    opacity:0;
+    transform:translateX(50px);
+    transition: all 1s ease-out 0.4s; /* Delay added here */
+  }
+
+  .cooking-content.visible{
+    opacity:1;
+    transform:translateX(0);
+  }
+
+  .cooking-content h2{
+    font-size:2rem;
+    margin-bottom:20px;
+    color: orangered;
+  }
+
+  .cooking-content p{
+    font-size:1rem;
+    line-height:1.6;
+    color:#555;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width:1024px){
+    .cooking-section{
+      padding:40px 5%;
+      gap:30px;
+    }
+    .cooking-content h2{
+      font-size:1.8rem;
+    }
+  }
+
+  @media (max-width:768px){
+    .cooking-section{
+      flex-direction:column;
+      padding:30px 5%;
+    }
+    .cooking-video, .cooking-content{
+      transform:none;
+      opacity:1;
+      transition:none;
+    }
+    .cooking-content h2{
+      font-size:1.5rem;
+      text-align:center;
+    }
+    .cooking-content p{
+      text-align:center;
+    }
+  }
+
+  @media (max-width:480px){
+    .cooking-section{
+      padding:20px 3%;
+    }
+    .cooking-content h2{
+      font-size:1.3rem;
+    }
+    .cooking-content p{
+      font-size:0.9rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="cooking-section">
+  <!-- LEFT VIDEO -->
+  <div class="cooking-video">
+    <video autoplay muted loop playsinline>
+      <source src="./cook.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="cooking-content">
+    <h2>Cooking Made Delicious & Fun</h2>
+    <p>
+      Discover the joy of cooking with recipes that excite your taste buds. <br><br>
+      
+      
+      Whether it's a quick snack or a gourmet meal, satisfy your cravings and unleash your inner chef. <br><br>
+      
+      
+      Explore techniques, flavors, and tips that make every dish unforgettable.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Scroll animation using Intersection Observer with staggered animation
+  const options = { threshold: 0.2 };
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        if(entry.target.classList.contains('cooking-video')){
+          entry.target.classList.add('visible');
+        } else if(entry.target.classList.contains('cooking-content')){
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 400); // Stagger delay 0.4s
+        }
+        observer.unobserve(entry.target); // Animate only once
+      }
+    });
+  }, options);
+
+  document.querySelectorAll('.cooking-video, .cooking-content').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+<section class="gku-section">
+
+    <div class="gku-bg-shape"></div>
+    
+    <div class="gku-container">
+    
+    <h2 class="gku-title">GET TO KNOW US</h2>
+    
+    <div class="gku-grid">
+    
+    <!-- LEFT MENU -->
+    <div class="gku-menu">
+    
+    <div class="gku-tab active" data-target="mission">Mission →</div>
+    <div class="gku-tab" data-target="vision">Vision</div>
+    <div class="gku-tab" data-target="values">Values</div>
+    
+    </div>
+    
+    
+    <!-- CONTENT -->
+    <div class="gku-content">
+    
+    <div class="gku-box active" id="mission">
+    
+    <p>
+    Our mission is to elevate the quality of life of the urban consumer
+    by offering unparalleled convenience and lightning-fast food delivery.
+    </p>
+    
+    </div>
+    
+    <div class="gku-box" id="vision">
+    
+    <p>
+    Our vision is to connect millions of customers with their favorite
+    restaurants and grocery stores using technology and innovation.
+    </p>
+    
+    </div>
+    
+    <div class="gku-box" id="values">
+    
+    <p>
+    We believe in transparency, customer happiness, innovation,
+    and empowering restaurants and delivery partners.
+    </p>
+    
+    </div>
+    
+    </div>
+    
+    
+    <!-- IMAGE -->
+    <div class="gku-image">
+    
+    <img src="./corp1.webp" class="gku-img active">
+    <img src="./back4webp.webp" class="gku-img">
+    <img src="./background1.webp" class="gku-img">
+    
+    </div>
+    
+    </div>
+    
+    </div>
+    
+    </section>
+
+    <style>
+
+        /* SECTION */
+
+.gku-section{
+position:relative;
+padding:110px 8%;
+background:#f7f7f7;
+overflow:hidden;
+}
+
+/* BACKGROUND MOTION */
+
+.gku-bg-shape{
+position:absolute;
+width:420px;
+height:420px;
+background:linear-gradient(135deg,#ff6a00,#ffb347);
+border-radius:50%;
+filter:blur(120px);
+top:-100px;
+left:-120px;
+opacity:.4;
+animation:gkuMove 10s infinite alternate ease-in-out;
+}
+
+@keyframes gkuMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(120px)}
+}
+
+/* CONTAINER */
+
+.gku-container{
+max-width:1200px;
+margin:auto;
+}
+
+.gku-title{
+text-align:center;
+font-size:38px;
+font-weight:700;
+margin-bottom:70px;
+}
+
+/* GRID */
+
+.gku-grid{
+display:grid;
+grid-template-columns:200px 1fr 420px;
+gap:60px;
+align-items:center;
+}
+
+/* MENU */
+
+.gku-menu{
+display:flex;
+flex-direction:column;
+gap:35px;
+}
+
+.gku-tab{
+font-size:18px;
+color:#999;
+cursor:pointer;
+transition:.3s;
+}
+
+.gku-tab.active{
+color:#ff5200;
+font-weight:600;
+transform:scale(1.1);
+}
+
+/* CONTENT */
+
+.gku-box{
+display:none;
+opacity:0;
+transform:translateY(20px);
+transition:.5s;
+}
+
+.gku-box.active{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
+
+.gku-box p{
+line-height:1.7;
+color:#666;
+max-width:420px;
+}
+
+/* IMAGE */
+
+.gku-image{
+position:relative;
+height:320px;
+}
+
+.gku-img{
+position:absolute;
+width:100%;
+border-radius:22px;
+opacity:0;
+filter:blur(10px);
+transform:scale(0.9);
+transition:0.8s;
+}
+
+/* ACTIVE IMAGE */
+
+.gku-img.active{
+opacity:1;
+filter:blur(0);
+transform:scale(1);
+animation:gkuZoom 6s infinite ease-in-out;
+}
+
+/* ZOOM ANIMATION */
+
+@keyframes gkuZoom{
+
+0%{transform:scale(1)}
+50%{transform:scale(1.08)}
+100%{transform:scale(1)}
+
+}
+
+/* ======================
+RESPONSIVE
+====================== */
+
+/* LAPTOP */
+
+@media(max-width:1200px){
+
+.gku-grid{
+grid-template-columns:180px 1fr 350px;
+}
+
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+
+.gku-grid{
+grid-template-columns:1fr;
+text-align:center;
+gap:40px;
+}
+
+.gku-menu{
+flex-direction:row;
+justify-content:center;
+}
+
+.gku-image{
+max-width:420px;
+margin:auto;
+}
+
+.gku-box p{
+margin:auto;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.gku-section{
+padding:70px 20px;
+}
+
+.gku-title{
+font-size:26px;
+}
+
+.gku-menu{
+flex-direction:column;
+align-items:center;
+}
+
+}
+        </style>
+
+<script>
+
+    const tabs=document.querySelectorAll(".gku-tab");
+    const contents=document.querySelectorAll(".gku-box");
+    const images=document.querySelectorAll(".gku-img");
+    
+    tabs.forEach((tab,index)=>{
+    
+    tab.addEventListener("click",()=>{
+    
+    /* remove active */
+    
+    tabs.forEach(t=>t.classList.remove("active"));
+    contents.forEach(c=>c.classList.remove("active"));
+    images.forEach(i=>i.classList.remove("active"));
+    
+    /* add active */
+    
+    tab.classList.add("active");
+    contents[index].classList.add("active");
+    images[index].classList.add("active");
+    
+    });
+    
+    });
+    
+    </script>
+
+<!-- ================= INDUSTRY PIONEER SECTION ================= -->
+
+<section class="fdp-industry-section">
+
+    <div class="fdp-container">
+    
+    <h2 class="fdp-title">Industry Pioneer in Food Delivery</h2>
+    
+    <p class="fdp-subtitle">
+    We connect customers with the best restaurants in the city.  
+    Our platform delivers fresh meals, groceries, and essentials quickly and reliably.
+    </p>
+    
+    <div class="fdp-grid">
+    
+    <!-- CARD 1 -->
+    <div class="fdp-card">
+    <div class="fdp-icon">🚀</div>
+    <h3>Fast Delivery</h3>
+    <p>
+    Lightning-fast delivery network ensuring your favorite food reaches you hot and fresh within minutes.
+    </p>
+    </div>
+    
+    <!-- CARD 2 -->
+    <div class="fdp-card">
+    <div class="fdp-icon">🍔</div>
+    <h3>Top Restaurants</h3>
+    <p>
+    Partnering with the best restaurants to provide a wide variety of cuisines and dishes.
+    </p>
+    </div>
+    
+    <!-- CARD 3 -->
+    <div class="fdp-card">
+    <div class="fdp-icon">🛒</div>
+    <h3>Groceries & Essentials</h3>
+    <p>
+    Order groceries, snacks, and daily essentials anytime with our reliable delivery system.
+    </p>
+    </div>
+    
+    <!-- CARD 4 -->
+    <div class="fdp-card">
+    <div class="fdp-icon">📱</div>
+    <h3>Smart Ordering</h3>
+    <p>
+    Our mobile-friendly platform makes ordering food easy with real-time tracking and updates.
+    </p>
+    </div>
+    
+    </div>
+    
+    </div>
+    </section>
+
+    <style>
+        /* ================= INDUSTRY PIONEER ================= */
+
+.fdp-industry-section{
+padding:80px 8%;
+background:#fffdf7;
+font-family:'Poppins',sans-serif;
+}
+
+.fdp-container{
+max-width:1200px;
+margin:auto;
+text-align:center;
+}
+
+.fdp-title{
+font-size:40px;
+font-weight:700;
+margin-bottom:15px;
+color:#222;
+}
+
+.fdp-subtitle{
+font-size:16px;
+color:#666;
+max-width:700px;
+margin:auto;
+margin-bottom:50px;
+}
+
+.fdp-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.fdp-card{
+background:#ffffff;
+padding:35px 25px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.4s;
+cursor:pointer;
+}
+
+.fdp-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
+}
+
+.fdp-icon{
+font-size:35px;
+margin-bottom:15px;
+}
+
+.fdp-card h3{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.fdp-card p{
+font-size:14px;
+color:#666;
+line-height:1.6;
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:992px){
+
+.fdp-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.fdp-title{
+font-size:32px;
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+.fdp-grid{
+grid-template-columns:1fr;
+}
+
+.fdp-title{
+font-size:26px;
+}
+
+.fdp-subtitle{
+font-size:14px;
+}
+
+.fdp-card{
+padding:25px;
+}
+
+}
+    </style>    
+    <script>
+
+const fdpCards = document.querySelectorAll(".fdp-card");
+
+const fdpObserver = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+}
+});
+});
+
+fdpCards.forEach(card=>{
+card.style.opacity="0";
+card.style.transform="translateY(40px)";
+card.style.transition="0.6s";
+fdpObserver.observe(card);
+});
+</script>
+
+<!-- ================= FOOD DELIVERY JOURNEY SECTION ================= -->
+
+<section class="fdj-section">
+
+    <h2 class="fdj-title">Our Journey</h2>
+    <p class="fdj-subtitle">From a small startup to a nationwide food delivery platform</p>
+    
+    <div class="fdj-timeline">
+    
+    <!-- STEP 1 -->
+    <div class="fdj-item">
+    <div class="fdj-icon">🚀</div>
+    <div class="fdj-content">
+    <h3>2019 – The Beginning</h3>
+    <p>Our food delivery journey started with a small team and a big dream — delivering delicious meals to customers quickly and safely.</p>
+    </div>
+    </div>
+    
+    <!-- STEP 2 -->
+    <div class="fdj-item">
+    <div class="fdj-icon">🏪</div>
+    <div class="fdj-content">
+    <h3>2020 – First Restaurant Partners</h3>
+    <p>We partnered with 50+ restaurants and introduced fast doorstep delivery for local food lovers.</p>
+    </div>
+    </div>
+    
+    <!-- STEP 3 -->
+    <div class="fdj-item">
+    <div class="fdj-icon">🌍</div>
+    <div class="fdj-content">
+    <h3>2021 – Expansion</h3>
+    <p>Our service expanded to multiple cities with improved delivery logistics and faster service.</p>
+    </div>
+    </div>
+    
+    <!-- STEP 4 -->
+    <div class="fdj-item">
+    <div class="fdj-icon">📱</div>
+    <div class="fdj-content">
+    <h3>2022 – Mobile App Launch</h3>
+    <p>We launched our mobile app allowing customers to order food with just a few taps.</p>
+    </div>
+    </div>
+    
+    <!-- STEP 5 -->
+    <div class="fdj-item">
+    <div class="fdj-icon">🏆</div>
+    <div class="fdj-content">
+    <h3>2024 – Industry Leader</h3>
+    <p>Today we deliver thousands of meals daily with hundreds of restaurant partners and satisfied customers.</p>
+    </div>
+    </div>
+    
+    </div>
+    </section>
+
+    <style>
+        /* ===== JOURNEY SECTION ===== */
+
+.fdj-section{
+padding:80px 10%;
+background:#fff;
+font-family:Poppins,sans-serif;
+}
+
+.fdj-title{
+text-align:center;
+font-size:40px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.fdj-subtitle{
+text-align:center;
+color:#777;
+margin-bottom:60px;
+}
+
+/* TIMELINE */
+
+.fdj-timeline{
+position:relative;
+max-width:1000px;
+margin:auto;
+}
+
+.fdj-timeline::before{
+content:"";
+position:absolute;
+left:50%;
+width:4px;
+height:100%;
+background:#ff6b35;
+transform:translateX(-50%);
+}
+
+/* ITEM */
+
+.fdj-item{
+display:flex;
+align-items:center;
+margin-bottom:60px;
+opacity:0;
+transform:translateY(60px);
+transition:0.8s;
+}
+
+/* LEFT RIGHT EFFECT */
+
+.fdj-item:nth-child(odd){
+flex-direction:row-reverse;
+}
+
+/* ICON */
+
+.fdj-icon{
+width:70px;
+height:70px;
+background:#ff6b35;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+border-radius:50%;
+z-index:2;
+margin:0 25px;
+animation:fdjPulse 2s infinite;
+}
+
+/* CONTENT */
+
+.fdj-content{
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+max-width:400px;
+transition:0.3s;
+}
+
+.fdj-content:hover{
+transform:translateY(-8px);
+}
+
+/* ICON PULSE */
+
+@keyframes fdjPulse{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+
+}
+
+/* SCROLL ACTIVE */
+
+.fdj-item.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* TABLET */
+
+@media(max-width:992px){
+
+.fdj-timeline::before{
+left:30px;
+}
+
+.fdj-item{
+flex-direction:row !important;
+}
+
+.fdj-icon{
+margin-right:20px;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.fdj-section{
+padding:60px 20px;
+}
+
+.fdj-title{
+font-size:30px;
+}
+
+.fdj-content{
+max-width:100%;
+}
+
+.fdj-item{
+align-items:flex-start;
+}
+
+}
+    </style>
+    <script>
+
+const fdjItems = document.querySelectorAll(".fdj-item");
+
+function fdjReveal(){
+
+fdjItems.forEach(item => {
+
+const top = item.getBoundingClientRect().top;
+const trigger = window.innerHeight - 100;
+
+if(top < trigger){
+item.classList.add("show");
+}
+
+});
+
+}
+
+window.addEventListener("scroll", fdjReveal);
+fdjReveal();
+</script>
+
+<!-- <footer> -->
+    <footer class="footer">
+        <div class="footer-container">
+    
+            <!-- Logo / About -->
+            <div class="footer-box">
+                <img src="./white.webp" alt="Stackly Logo" class="footer-logo"  style="height:60px;">
+    
+               
+                <!-- <p>We deliver secure, scalable and innovative IT services for global businesses.</p><br> -->
+    
+                <!-- Social Icons -->
+                <div class="footer-social">
+                    <a href="./404.html"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="./404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="./index.html">Home</a></li>
+                  <li><a href="./about.html">About</a></li>
+                  <li><a href="./order.html">order</a></li>
+                  <li><a href="./contact.html">contact</a></li>
+                  <li><a href="./dashboard.html">Dashboard</a></li>
+                  <li><a href="./login.html">Login</a></li>
+                  <li><a href="./signup.html">Signup</a></li>
+                  
+                </ul>
+            </div>
+    
+            <!-- Address -->
+            <div class="footer-box">
+                <h3>Our Address</h3>
+                <p>
+                    MMR complex.<br>
+                    chinna tirupathi kovil street,<br>
+                    salem,Tamil nadu-636008<br>
+                    <!-- Bengaluru, Karnataka – 560066<br> -->
+                    India<br><br>
+    
+                    <strong>Phone:</strong> +91 98765 43210<br>
+                    <strong>Email:</strong> support@thestackly.com
+                </p>
+            </div>
+    
+            <!-- Google Map -->
+            <div class="footer-box">
+                <h3>Location</h3>
+                <iframe 
+                src="https://www.google.com/maps?q=Salem%20Tamil%20Nadu&output=embed"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+            <p>© 2025 stackly | All Rights Reserved</p>
+        </div>
+    </footer>
+    
+    
+    
+</body>
+</html>
