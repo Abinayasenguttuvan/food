@@ -101,12 +101,14 @@
         
         /* ================= FOOTER ================= */
         .footer {
+            
             background:linear-gradient(to top, rgb(228, 167, 74), transparent);
             
             color: black;
         }
         
         .footer-container {
+            
             display: flex;
             justify-content: space-between;
             padding: 30px;
