@@ -48,8 +48,132 @@
         </div>
 
     </header>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* --- Full screen overlay --- */
+#preloader {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: linear-gradient(to top, rgb(228, 167, 74), transparent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index: 9999;
+  flex-direction: column;
+  opacity:1;
+  transition: opacity 0.8s ease;
+}
+
+/* --- Spinner wrapper --- */
+.spinner-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+/* --- Main spinner circle --- */
+.spinner {
+  border: 8px solid rgba(255,255,255,0.3);
+  border-top: 8px solid #fff;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+/* --- Food icons rotating --- */
+.food-icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  left: 50%;
+  margin: -12.5px 0 0 -12.5px; /* Center icon */
+  animation: rotateIcon 2s linear infinite;
+}
+
+/* Position multiple icons around circle */
+.food-icon:nth-child(1) { transform: rotate(0deg) translate(50px) rotate(0deg); }
+.food-icon:nth-child(2) { transform: rotate(72deg) translate(50px) rotate(-72deg); }
+.food-icon:nth-child(3) { transform: rotate(144deg) translate(50px) rotate(-144deg); }
+.food-icon:nth-child(4) { transform: rotate(216deg) translate(50px) rotate(-216deg); }
+.food-icon:nth-child(5) { transform: rotate(288deg) translate(50px) rotate(-288deg); }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateIcon {
+  0% { transform: rotate(0deg) translate(50px) rotate(0deg); }
+  100% { transform: rotate(360deg) translate(50px) rotate(-360deg); }
+}
+
+/* Loader text */
+#preloader p {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Responsive spinner size */
+@media screen and (max-width: 768px) {
+  .spinner-wrapper { width: 70px; height: 70px; }
+  .spinner { width: 70px; height: 70px; border-width:6px; }
+  .food-icon { width:18px; height:18px; margin:-9px 0 0 -9px; }
+  #preloader p { font-size:1rem; }
+}
+
+@media screen and (max-width: 480px) {
+  .spinner-wrapper { width: 60px; height: 60px; }
+  .spinner { width: 60px; height: 60px; border-width:5px; }
+  .food-icon { width:15px; height:15px; margin:-7.5px 0 0 -7.5px; }
+  #preloader p { font-size:0.9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="spinner-wrapper">
+    <div class="spinner"></div>
+    <!-- Food icons (replace with your own images or emoji if you like) -->
+    <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Burger" class="food-icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/3075/3075950.png" alt="Pizza" class="food-icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/3075/3075982.png" alt="Drink" class="food-icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/3075/3075963.png" alt="Fries" class="food-icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/3075/3075974.png" alt="Salad" class="food-icon">
+  </div>
+  <p>Loading Your Fresh Food...</p>
+</div>
+
+
+
+<script>
+// Wait for window to load
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    const mainContent = document.getElementById('mainContent');
+
+    // Fade out preloader
+    preloader.style.opacity = 0;
+    setTimeout(() => {
+      preloader.style.display = 'none';
+      mainContent.style.display = 'block';
+    }, 800); // match CSS transition
+});
+</script>
+
+
 
 <style>
 
@@ -1113,7 +1237,7 @@ trendingCards.forEach(card => trendingObserver.observe(card));
       <!-- CARD 9 -->
       <div class="fdph-card">
           <div class="fdph-img-wrapper">
-              <img src="./shawarma.webp" class="fdph-img" alt="Shawarma">
+              <img src="./shawarma .webp" class="fdph-img" alt="Shawarma">
           </div>
           <div class="fdph-content">
               <h3>Shawarma</h3>
@@ -1127,43 +1251,6 @@ trendingCards.forEach(card => trendingObserver.observe(card));
 </section>
 <style>
   
-/* Popular Dishes Section */
-/* .fdph-section {
-    padding: 80px 20px;
-    background: #fdfdfd;
-}
-
-.fdph-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 50px;
-    color: #333;
-} */
-
-/* GRID LAYOUT */
-/* .fdph-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    justify-items: center;
-} */
-
-/* CARD STYLING */
-/* .fdph-card {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    max-width: 260px;
-}
-
-.fdph-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-} */
 
 /* IMAGE */
 .fdph-img-wrapper {
@@ -2218,13 +2305,7 @@ width:250px;
     </div>
     </div>
     
-    <div class="fdliveCard">
-    <img src="pasta.webp">
-    <div class="fdliveOfferText">
-    <h3>30% OFF Pasta</h3>
-    <p>Italian Kitchen</p>
-    </div>
-    </div>
+    
     
     </div>
     
@@ -3136,8 +3217,8 @@ frame.src=""
 
 
 
-
-
+<script src="./script.js"
+></script>
 
 
 </body>
