@@ -17,9 +17,17 @@
         
         
         
-        
         /* ================= HEADER ================= */
         .header {
+            
+            
+                position: sticky;
+                top: 0;
+                z-index: 9999;
+                /* background: #fff; */
+            
+
+            /* position: fixed; */
             width: 100%;
             padding: 18px 40px;
             background:  linear-gradient(to top, rgb(228, 167, 74), transparent);
@@ -29,10 +37,12 @@
             align-items: center;
         }
         
+        
         .logo {
             font-size: 28px;
             font-weight: 700;
         }
+        
         
         .logo span {
             color: gold;

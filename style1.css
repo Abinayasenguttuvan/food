@@ -20,6 +20,9 @@ ul { list-style: none; }
 
 /* ================= HEADER ================= */
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
     width: 100%;
     padding: 18px 40px;
     background:  green;
