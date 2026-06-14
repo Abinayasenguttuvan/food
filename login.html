@@ -1,285 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stackly Magazine - Login</title>
+
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- TOP BAR -->
-<div class="top-bar">
+<style>
 
-    <a href="./index.html" class="home-btn">
-      <i class="fa fa-home"></i> Home
-    </a> 
+/* ================= RESET ================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+overflow:hidden;
+}
+
+/* BACKGROUND SLIDER */
+.bg-slider{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+display:flex;
+animation:slide 16s infinite;
+}
+
+.bg-slider img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.5);
+}
+
+@keyframes slide{
+0%{transform:translateX(0);}
+25%{transform:translateX(-100%);}
+50%{transform:translateX(-200%);}
+75%{transform:translateX(-300%);}
+100%{transform:translateX(0);}
+}
+
+/* ================= WRAPPER ================= */
+.wrapper{
+width:92%;
+max-width:1000px;
+display:flex;
+border-radius:20px;
+overflow:hidden;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ================= LEFT ================= */
+.left{
+flex:1;
+padding:30px;
+color:#fff;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+/* TOP */
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.home-btn{
+color:#fff;
+text-decoration:none;
+font-size:14px;
+background:rgba(255,255,255,0.1);
+padding:6px 10px;
+border-radius:6px;
+}
+
+/* TITLE */
+h1{
+font-size:28px;
+}
+
+h2{
+font-size:14px;
+opacity:0.8;
+margin-bottom:20px;
+}
+
+/* INPUTS */
+.input-box{
+margin:10px 0;
+position:relative;
+}
+
+.input-box input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+outline:none;
+background:rgba(255,255,255,0.15);
+color:#fff;
+}
+
+.eye{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#ff6b35;
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff4d1a;
+transform:scale(1.03);
+}
+
+/* ERROR */
+#error{
+color:#ffb3b3;
+font-size:13px;
+margin-top:10px;
+}
+
+/* SOCIAL */
+.social button{
+margin-top:8px;
+background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.2);
+}
+
+/* ================= RIGHT IMAGE PANEL ================= */
+.right{
+flex:1;
+position:relative;
+overflow:hidden;
+}
+
+.right img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* OVERLAY */
+.overlay{
+position:absolute;
+bottom:20px;
+left:20px;
+background:rgba(0,0,0,0.4);
+padding:10px;
+border-radius:10px;
+color:#fff;
+backdrop-filter:blur(10px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+.wrapper{
+flex-direction:column;
+}
+
+.right{
+height:250px;
+}
+}
+
+@media(max-width:500px){
+.left{
+padding:20px;
+}
+
+h1{
+font-size:22px;
+}
+
+h2{
+font-size:12px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND SLIDER -->
+<div class="bg-slider">
+<img src="./pizza.webp">
+<img src="./burger.webp">
+<img src="./beverages.webp">
+<img src="./veg1.webp">
+</div>
+
+<div class="wrapper">
+
+<!-- LEFT -->
+<div class="left">
   
-    <!-- <a href="./index.html" class="logout-btn">
-        <i class="fa fa-sign-out-alt"></i> Logout
-    </a> -->
+
+<div class="top-bar">
+<a href="index.html" class="home-btn"><i class="fa fa-home"></i> Home</a>
+</div>
+
+<h1>Welcome Back 🍔</h1>
+<h2>Login to Food Ordering App</h2>
+
+<div class="input-box">
+<input type="email" id="email" placeholder="Enter Email">
+</div>
+
+<div class="input-box">
+<input type="password" id="password" placeholder="Enter Password">
+<i class="fa-solid fa-eye eye" onclick="togglePassword()"></i>
+</div>
+
+<button onclick="login()">Login</button>
+
+<p id="error"></p>
+
+<div class="social">
+  <button onclick="go404()">
+    <i class="fab fa-google"></i> Google
+  </button>
   
-  </div> 
-  
-  <!-- LOGIN -->
-  <div class="login-container">
-  
-    <h1 class="title">Stackly Magazine</h1>
-    <h2>Log in or create an account</h2>
-    
-    <input type="email" id="email" placeholder="Enter Email">
-    
-    <div class="password-box">
-    <input type="password" id="password" placeholder="Enter Password">
-    <i class="fa-solid fa-eye-slash eye-icon" onclick="togglePassword()"></i>
-    </div>
-    
-    <button onclick="validateLogin()">Submit</button>
-    
-    <!-- FORGOT PASSWORD + SIGNUP -->
-    
-    <div class="extra-links">
-    <a href="signup.html">Signup</a>
-    <a href="404.html">Forgot Password?</a>
-    </div>
-    
-    <p id="error"></p>
-    
-    <div class="or">OR</div>
-    
-    <a href="./404.html">
-    <button class="social-btn">
-    <i class="fab fa-google"></i> Connect with Google
-    </button>
-    
-    <button class="social-btn">
-    <i class="fab fa-facebook"></i> Connect with Facebook
-    </button>
-    
-    <button class="social-btn">
-    <i class="fab fa-apple"></i> Connect with Apple
-    </button>
-    </a>
-    
-    </div>
-    
-  
-  <!-- BRAND LOGOS -->
-  <a href="./404.html">
-  <div class="brand-logos">
-    
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968852.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732229.png">
-  </a>
+  <button onclick="go404()">
+    <i class="fab fa-apple"></i> Apple
+  </button>
+</div>
+
+</div>
+
+  <script>
+function go404(){
+  window.location.href = "404.html";
+}
+</script>
+
+
+<!-- RIGHT -->
+<div class="right">
+  <div class="login-logo">
+    <img src="./white.webp" alt="Stackly Ride Logo" style="width:100px; height:auto;">
   </div>
   
-  <style>
-    *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Poppins,sans-serif;
-  }
-  
-  /* TOP BAR */
-  
-  .top-bar{
-  width:100%;
-  padding:15px 30px;
-  display:flex;
-  justify-content:flex-start;
-  /* background:#000; */
-  }
-  
-  .home-btn{
-  color:#fff;
-  text-decoration:none;
-  font-size:16px;
-  }
-  
-  .home-btn i{
-  margin-right:5px;
-  }
-  
-  /* LOGIN */
-  
-  body{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  min-height:100vh;
-  background:#f5f5f5;
-  }
-  
-  .login-container{
-  width:400px;
-  background:#fff;
-  padding:40px;
-  border-radius:10px;
-  text-align:center;
-  }
-  
-  .title{
-  margin-bottom:10px;
-  }
-  
-  .login-container input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:1px solid #ccc;
-  }
-  
-  .password-box{
-  position:relative;
-  }
-  
-  .eye-icon{
-  position:absolute;
-  right:10px;
-  top:50%;
-  transform:translateY(-50%);
-  cursor:pointer;
-  }
-  
-  button{
-  width:100%;
-  padding:12px;
-  background:#000;
-  color:#fff;
-  border:none;
-  margin:10px 0;
-  cursor:pointer;
-  }
-  
-  .extra-links{
-  display:flex;
-  justify-content:space-between;
-  margin:10px 0;
-  }
-  
-  .extra-links a{
-  text-decoration:none;
-  font-size:14px;
-  }
-  
-  #error{
-  color:red;
-  font-size:14px;
-  }
-  
-  /* SOCIAL */
-  
-  .social-btn{
-  background:#444;
-  margin:5px 0;
-  }
-  
-  /* BRAND LOGOS */
-  
-  .brand-logos{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:20px;
-  flex-wrap:wrap;
-  }
-  
-  .brand-logos img{
-  width:40px;
-  }
-  
-  /* TABLET */
-  
-  @media(max-width:1024px){
-  .login-container{
-  width:70%;
-  }
-  }
-  
-  /* MOBILE */
-  
-  @media(max-width:768px){
-  .login-container{
-  width:100%;
-  padding:20px;
-  }
-  
-  .top-bar{
-  padding:10px;
-  }
-  }
-  
-  /* LOGIN BACKGROUND IMAGE */
-  
-  body{
-  background:url("./back2.webp") no-repeat center/cover;
-  position:relative;
-  }
-  
-  body::before{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  top:0;
-  left:0;
-  z-index:-1;
-  }
-  
-  /* ICON INITIAL HIDE */
-  
-  .brand-logos img{
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.6s ease;
-  }
-  
-  .brand-logos img.show{
-  opacity:1;
-  transform:translateY(0);
-  }
-  </style>
-  
-  <script>
-  
-  window.addEventListener("load",()=>{
-  
-  let icons=document.querySelectorAll(".brand-logos img");
-  
-  icons.forEach((icon,index)=>{
-  setTimeout(()=>{
-  icon.classList.add("show");
-  },index*500);
-  });
-  
-  });
-    function togglePassword(){
-  
-  let pass=document.getElementById("password");
-  let icon=document.querySelector(".eye-icon");
-  
-  if(pass.type==="password"){
-  pass.type="text";
-  icon.classList.remove("fa-eye-slash");
-  icon.classList.add("fa-eye");
-  }else{
-  pass.type="password";
-  icon.classList.remove("fa-eye");
-  icon.classList.add("fa-eye-slash");
-  }
-  
-  }
-  
-  function validateLogin(){
-  
-  let email=document.getElementById("email").value.trim();
-  let password=document.getElementById("password").value.trim();
-  let error=document.getElementById("error");
-  
-  if(email==="" || password===""){
-  error.innerText="Please enter email and password";
-  }else{
-  window.location.href="index.html";
-  }
-  
-  }
-  </script>
+<img src="./burger.webp">
+
+<div class="overlay">
+<h3>Fresh Food Delivered</h3>
+
+<p>Hot & tasty meals at your door</p>
+</div>
+</div>
+
+</div>
+
+<script>
+
+/* PASSWORD */
+function togglePassword(){
+let pass=document.getElementById("password");
+pass.type = pass.type === "password" ? "text" : "password";
+}
+
+/* LOGIN VALIDATION */
+function login(){
+
+let email=document.getElementById("email").value.trim();
+let password=document.getElementById("password").value.trim();
+let error=document.getElementById("error");
+
+if(email==="" || password===""){
+error.innerText="⚠️ Please fill all details";
+return;
+}
+
+window.location.href="404.html";
+}
+
+</script>
+
+</body>
+</html>

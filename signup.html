@@ -1,75 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stackly Magazine - Signup</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
-/* RESET */
-
+/* ================= RESET ================= */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
-/* BACKGROUND */
-
+/* ================= BODY ================= */
 body{
 min-height:100vh;
-background:url("./back2.webp") no-repeat center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+overflow-x:hidden;
+}
+
+/* BACKGROUND SLIDER */
+.bg-slider{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+display:flex;
+animation:slide 16s infinite;
+}
+
+.bg-slider img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.5);
+}
+
+@keyframes slide{
+0%{transform:translateX(0);}
+25%{transform:translateX(-100%);}
+50%{transform:translateX(-200%);}
+75%{transform:translateX(-300%);}
+100%{transform:translateX(0);}
+}
+
+/* ================= WRAPPER ================= */
+.wrapper{
+width:92%;
+max-width:1000px;
+display:flex;
+border-radius:20px;
+overflow:hidden;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ================= LEFT ================= */
+.left{
+flex:1;
+padding:30px;
+color:#fff;
 display:flex;
 flex-direction:column;
-align-items:center;
 justify-content:center;
 }
 
-body::before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-top:0;
-left:0;
-z-index:-1;
+/* TOP BAR */
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
 }
 
-/* BACK HOME */
-
-.top-home{
-position:absolute;
-top:20px;
-left:20px;
+.home-btn{
 color:#fff;
 text-decoration:none;
-font-size:18px;
+background:rgba(255,255,255,0.1);
+padding:6px 10px;
+border-radius:6px;
+font-size:14px;
 }
 
-/* CONTAINER */
-
-.signup-container{
-width:400px;
-background:#fff;
-padding:40px;
-border-radius:10px;
-text-align:center;
+/* TITLE */
+h1{
+font-size:26px;
 }
 
-.signup-container input{
-width:100%;
-padding:12px;
+h2{
+font-size:14px;
+opacity:0.8;
+margin-bottom:20px;
+}
+
+/* INPUT */
+.input-box{
 margin:10px 0;
-border:1px solid #ccc;
-}
-
-/* PASSWORD */
-
-.password-box{
 position:relative;
 }
 
-.eye-icon{
+.input-box input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+outline:none;
+background:rgba(255,255,255,0.15);
+color:#fff;
+}
+
+/* EYE ICON */
+.eye{
 position:absolute;
 right:10px;
 top:50%;
@@ -78,65 +132,84 @@ cursor:pointer;
 }
 
 /* BUTTON */
-
 button{
 width:100%;
 padding:12px;
-background:#000;
-color:#fff;
 border:none;
-margin:10px 0;
+border-radius:8px;
+background:#ff6b35;
+color:#fff;
+font-weight:bold;
 cursor:pointer;
+transition:0.3s;
 }
 
+button:hover{
+background:#ff4d1a;
+transform:scale(1.03);
+}
+
+/* ERROR */
 #error{
-color:red;
-font-size:14px;
+color:#ffb3b3;
+font-size:13px;
+margin-top:10px;
 }
 
 /* SOCIAL */
-
-.social-btn{
-background:rgb(236, 210, 210);
-margin:5px 0;
+.social button{
+margin-top:8px;
+background:rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.2);
 }
 
-/* LOGOS */
-
-.logos{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-top:20px;
-flex-wrap:wrap;
+/* ================= RIGHT IMAGE ================= */
+.right{
+flex:1;
+position:relative;
+overflow:hidden;
 }
 
-.logos img{
-width:40px;
-opacity:0;
-transform:translateY(30px);
-transition:.5s;
+.right img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-.logos img.show{
-opacity:1;
-transform:translateY(0);
+/* OVERLAY */
+.overlay{
+position:absolute;
+bottom:20px;
+left:20px;
+background:rgba(0,0,0,0.4);
+padding:10px;
+border-radius:10px;
+color:#fff;
+backdrop-filter:blur(10px);
 }
 
-/* TABLET */
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+.wrapper{
+flex-direction:column;
+}
 
-@media(max-width:1024px){
-.signup-container{
-width:70%;
+.right{
+height:250px;
 }
 }
 
-/* MOBILE */
-
-@media(max-width:768px){
-.signup-container{
-width:90%;
+@media(max-width:500px){
+.left{
 padding:20px;
+}
+
+h1{
+font-size:22px;
+}
+
+h2{
+font-size:12px;
 }
 }
 
@@ -145,91 +218,78 @@ padding:20px;
 
 <body>
 
-<!-- BACK HOME -->
-<a href="index.html" class="top-home">
-<i class="fa fa-home"></i> Home
-</a>
-
-<div class="signup-container">
-
-<h2>Create Account</h2>
-
-<input type="text" id="name" placeholder="Enter Full Name">
-<input type="email" id="email" placeholder="Enter Mail ID">
-
-<div class="password-box">
-<input type="password" id="password" placeholder="Enter Password">
-<i class="fa-solid fa-eye-slash eye-icon"
-onclick="togglePassword('password',this)"></i>
+<!-- BACKGROUND SLIDER -->
+<div class="bg-slider">
+    <img src="./pizza.webp">
+    <img src="./burger.webp">
+    <img src="./beverages.webp">
+    <img src="./veg1.webp">
 </div>
 
-<div class="password-box">
+<div class="wrapper">
+
+<!-- LEFT -->
+<div class="left">
+
+<div class="top-bar">
+<a href="index.html" class="home-btn"><i class="fa fa-home"></i> Home</a>
+</div>
+
+<h1>Create Account 🍕</h1>
+<h2>Join Food Ordering App</h2>
+
+<div class="input-box">
+<input type="text" id="name" placeholder="Full Name">
+</div>
+
+<div class="input-box">
+<input type="email" id="email" placeholder="Email">
+</div>
+
+<div class="input-box">
+<input type="password" id="password" placeholder="Password">
+<i class="fa-solid fa-eye eye" onclick="togglePassword('password')"></i>
+</div>
+
+<div class="input-box">
 <input type="password" id="confirm" placeholder="Confirm Password">
-<i class="fa-solid fa-eye-slash eye-icon"
-onclick="togglePassword('confirm',this)"></i>
+<i class="fa-solid fa-eye eye" onclick="togglePassword('confirm')"></i>
 </div>
+
+<button onclick="signup()">Sign Up</button>
 
 <p id="error"></p>
 
-<button onclick="signup()">SIGN UP</button>
-
-<div class="or">OR</div>
-<a href="./404.html">
-<button class="social-btn">
-   
-<i class="fab fa-google"></i> Connect with Google
-</a>
-</button>
-
-<button class="social-btn">
-    <a href="./404.html">
-<i class="fab fa-facebook"></i> Connect with Facebook
-</a>
-</button>
-
-<button class="social-btn">
-    <a href="./404.html">
-<i class="fab fa-apple"></i> Connect with Apple
-</a>
-</button>
-
-<p>
-Already have an account?
-<a href="login.html">Login</a>
-</p>
+<div class="social">
+<button onclick="go404()"><i class="fab fa-google"></i> Google</button>
+<button onclick="go404()"><i class="fab fa-apple"></i> Apple</button>
+</div>
 
 </div>
 
-<div class="logos">
-    <a href="./404.html">
-<img src="https://cdn-icons-png.flaticon.com/512/732/732221.png">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968764.png">
-<img src="https://cdn-icons-png.flaticon.com/512/888/888879.png">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968852.png">
-<img src="https://cdn-icons-png.flaticon.com/512/732/732229.png">
-</a>
+<!-- RIGHT -->
+<div class="right">
+    <div class="login-logo">
+        <img src="./white.webp" alt="Stackly Ride Logo" style="width:100px; height:auto;">
+      </div>
+<img src="./burger.webp">
+<div class="overlay">
+<h3>Fresh Food Daily</h3>
+<p>Join & order your favorites</p>
+</div>
+</div>
+
 </div>
 
 <script>
 
-/* SHOW PASSWORD */
-
-function togglePassword(id,icon){
-
+/* PASSWORD TOGGLE */
+function togglePassword(id){
 let input=document.getElementById(id);
-
-if(input.type==="password"){
-input.type="text";
-icon.classList.replace("fa-eye-slash","fa-eye");
-}else{
-input.type="password";
-icon.classList.replace("fa-eye","fa-eye-slash");
+input.type = input.type==="password" ? "text" : "password";
 }
 
-}
-
-/* SIGNUP */
-
+/* VALIDATION */
 function signup(){
 
 let name=document.getElementById("name").value.trim();
@@ -239,32 +299,22 @@ let confirm=document.getElementById("confirm").value.trim();
 let error=document.getElementById("error");
 
 if(name==="" || email==="" || pass==="" || confirm===""){
-error.innerText="Please fill all details";
+error.innerText="⚠️ Please fill all details";
 return;
 }
 
 if(pass!==confirm){
-error.innerText="Password not match";
+error.innerText="⚠️ Passwords do not match";
 return;
 }
 
 window.location.href="404.html";
-
 }
 
-/* ICON ANIMATION */
-
-window.addEventListener("load",()=>{
-
-let icons=document.querySelectorAll(".logos img");
-
-icons.forEach((icon,index)=>{
-setTimeout(()=>{
-icon.classList.add("show");
-},index*500);
-});
-
-});
+/* SOCIAL */
+function go404(){
+window.location.href="404.html";
+}
 
 </script>
 

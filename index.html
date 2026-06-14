@@ -1134,129 +1134,205 @@ trendingCards.forEach(card => trendingObserver.observe(card));
 
 <section class="fdph-section">
 
-  <h2 class="fdph-title">Popular Dishes by Category</h2>
-
-  <div class="fdph-grid">
-
-      <!-- CARD 1 -->
+    <h2 class="fdph-title">Popular Dishes by Category</h2>
+  
+    <div class="fdph-grid">
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./north.webp" class="fdph-img" alt="North Indian">
-          </div>
-          <div class="fdph-content">
-              <h3>North Indian</h3>
-              <p class="fdph-desc">Delicious curries, tandoori, and more.</p>
-              <span class="fdph-price">₹200 – ₹500</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./north.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>North Indian</h3>
+          <p>Delicious curries and tandoori items.</p>
+          <span>₹200 - ₹500</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 2 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./south.webp" class="fdph-img" alt="South Indian">
-          </div>
-          <div class="fdph-content">
-              <h3>South Indian</h3>
-              <p class="fdph-desc">Idli, dosa, and authentic flavors.</p>
-              <span class="fdph-price">₹150 – ₹400</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./south.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>South Indian</h3>
+          <p>Idli, dosa, and traditional meals.</p>
+          <span>₹150 - ₹400</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 3 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./biryani.webp" class="fdph-img" alt="Biryani">
-          </div>
-          <div class="fdph-content">
-              <h3>Biryani</h3>
-              <p class="fdph-desc">Fragrant and spicy biryani varieties.</p>
-              <span class="fdph-price">₹250 – ₹600</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./biryani.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>Biryani</h3>
+          <p>Spicy and flavorful biryani dishes.</p>
+          <span>₹250 - ₹600</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 4 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./pizza.webp" class="fdph-img" alt="Pizza">
-          </div>
-          <div class="fdph-content">
-              <h3>Pizza</h3>
-              <p class="fdph-desc">Cheesy, loaded, and freshly baked pizzas.</p>
-              <span class="fdph-price">₹300 – ₹700</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./pizza.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>Pizza</h3>
+          <p>Cheesy baked pizzas with toppings.</p>
+          <span>₹300 - ₹700</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 5 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./burger.webp" class="fdph-img" alt="Burger">
-          </div>
-          <div class="fdph-content">
-              <h3>Burger</h3>
-              <p class="fdph-desc">Juicy and flavorful burgers with toppings.</p>
-              <span class="fdph-price">₹150 – ₹350</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./burger.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>Burger</h3>
+          <p>Juicy burgers with fresh toppings.</p>
+          <span>₹150 - ₹350</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 6 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./chinese.webp" class="fdph-img" alt="Chinese">
-          </div>
-          <div class="fdph-content">
-              <h3>Chinese</h3>
-              <p class="fdph-desc">Fried rice, noodles, and Indo-Chinese favorites.</p>
-              <span class="fdph-price">₹200 – ₹500</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./chinese.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>Chinese</h3>
+          <p>Fried rice, noodles & sauces.</p>
+          <span>₹200 - ₹500</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 7 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./dessert.webp" class="fdph-img" alt="Desserts">
-          </div>
-          <div class="fdph-content">
-              <h3>Desserts</h3>
-              <p class="fdph-desc">Sweet treats to satisfy your cravings.</p>
-              <span class="fdph-price">₹100 – ₹300</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./dessert.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>Desserts</h3>
+          <p>Sweet desserts and bakery items.</p>
+          <span>₹100 - ₹300</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 8 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./coffee.webp" class="fdph-img" alt="Coffee">
-          </div>
-          <div class="fdph-content">
-              <h3>Coffee</h3>
-              <p class="fdph-desc">Freshly brewed coffee and beverages.</p>
-              <span class="fdph-price">₹80 – ₹200</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./coffee.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>Coffee</h3>
+          <p>Hot & cold beverages.</p>
+          <span>₹80 - ₹200</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-      <!-- CARD 9 -->
+  
       <div class="fdph-card">
-          <div class="fdph-img-wrapper">
-              <img src="./shawarma .webp" class="fdph-img" alt="Shawarma">
-          </div>
-          <div class="fdph-content">
-              <h3>Shawarma</h3>
-              <p class="fdph-desc">Grilled wraps with spicy and flavorful fillings.</p>
-              <span class="fdph-price">₹150 – ₹350</span>
-              <button class="fdph-btn">Place Order</button>
-          </div>
+        <img src="./shawarma.webp" class="fdph-img" alt="">
+        <div class="fdph-content">
+          <h3>Shawarma</h3>
+          <p>Grilled wraps with sauces.</p>
+          <span>₹150 - ₹350</span>
+          <button onclick="fdphOrder()">Place Order</button>
+        </div>
       </div>
-
-  </div>
-</section>
+  
+    </div>
+  </section>
+  
+  <script>
+  function fdphOrder(){
+    window.location.href = "404.html";
+  }
+  </script>
+  
+  <style>
+  
+  /* ================= BASE ================= */
+  .fdph-section{
+    padding:40px 20px;
+    font-family:Poppins, sans-serif;
+    background:#f8f8f8;
+  }
+  
+  .fdph-title{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:24px;
+  }
+  
+  /* ================= GRID ================= */
+  .fdph-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  
+  /* ================= CARD ================= */
+  .fdph-card{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+  }
+  
+  .fdph-card:hover{
+    transform:translateY(-5px);
+  }
+  
+  .fdph-img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+  }
+  
+  .fdph-content{
+    padding:15px;
+  }
+  
+  .fdph-content h3{
+    margin-bottom:5px;
+  }
+  
+  .fdph-content p{
+    font-size:13px;
+    color:#555;
+  }
+  
+  .fdph-content span{
+    display:block;
+    margin:8px 0;
+    font-weight:bold;
+  }
+  
+  /* ================= BUTTON ================= */
+  .fdph-content button{
+    width:100%;
+    padding:10px;
+    border:none;
+    background:#ff6b35;
+    color:#fff;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  
+  .fdph-content button:hover{
+    background:#ff4d1a;
+  }
+  
+  /* ================= RESPONSIVE ================= */
+  
+  /* TABLET */
+  @media(max-width:1024px){
+    .fdph-grid{
+      grid-template-columns:repeat(2, 1fr);
+    }
+  }
+  
+  /* MOBILE */
+  @media(max-width:768px){
+    .fdph-grid{
+      grid-template-columns:1fr;
+    }
+  
+    .fdph-title{
+      font-size:20px;
+    }
+  }
+  
+  </style>
 <style>
   
 
