@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stackly Magazine - Login</title>
+<title>Stackly food delivery - Login</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -211,7 +211,124 @@ h2{
 font-size:12px;
 }
 }
+/* FORGOT PASSWORD & SIGNUP */
 
+.auth-links{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:15px;
+margin-bottom:15px;
+}
+
+.auth-links a{
+color:#fff;
+text-decoration:none;
+font-size:14px;
+transition:0.3s;
+}
+
+.auth-links a:hover{
+color:#ff6b35;
+text-decoration:underline;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+.auth-links{
+flex-direction:column;
+gap:10px;
+align-items:flex-start;
+}
+
+.auth-links a{
+font-size:13px;
+}
+
+}
+/* STACKLY LOGO */
+
+.login-logo{
+    position:absolute;
+    top:20px;
+    left:20px;
+    z-index:10;
+    display:block;
+}
+
+.login-logo img{
+    width:120px;
+    height:auto;
+    display:block;
+    transition:0.3s ease;
+}
+
+.login-logo img:hover{
+    transform:scale(1.05);
+}
+
+/* TABLET */
+@media(max-width:900px){
+
+    .login-logo img{
+        width:100px;
+    }
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+    .login-logo{
+        top:15px;
+        left:15px;
+    }
+
+    .login-logo img{
+        width:80px;
+    }
+}
+/* STACKLY LOGO */
+
+.login-logo{
+    position:absolute;
+    top:20px;
+    left:20px;
+    z-index:10;
+    display:block;
+}
+
+.login-logo img{
+    width:120px;
+    height:auto;
+    display:block;
+    transition:0.3s ease;
+}
+
+.login-logo img:hover{
+    transform:scale(1.05);
+}
+
+/* TABLET */
+@media(max-width:900px){
+
+    .login-logo img{
+        width:100px;
+    }
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+    .login-logo{
+        top:15px;
+        left:15px;
+    }
+
+    .login-logo img{
+        width:80px;
+    }
+}
 </style>
 </head>
 
@@ -247,7 +364,15 @@ font-size:12px;
 <i class="fa-solid fa-eye eye" onclick="togglePassword()"></i>
 </div>
 
+
 <button onclick="login()">Login</button>
+
+<div class="auth-links">
+    <a href="./404.html">Forgot Password?</a>
+    <a href="./signup.html">Sign Up</a>
+</div>
+
+<p id="error"></p>
 
 <p id="error"></p>
 
@@ -270,21 +395,24 @@ function go404(){
 </script>
 
 
+
+  
 <!-- RIGHT -->
 <div class="right">
-  <div class="login-logo">
-    <img src="./white.webp" alt="Stackly Ride Logo" style="width:100px; height:auto;">
+
+  <!-- STACKLY LOGO -->
+  <a href="./index.html" class="login-logo">
+      <img src="./white.webp" alt="Stackly Logo">
+  </a>
+
+  <img src="./burger.webp" alt="Burger">
+
+  <div class="overlay">
+      <h3>Fresh Food Delivered</h3>
+      <p>Hot & tasty meals at your door</p>
   </div>
-  
-<img src="./burger.webp">
 
-<div class="overlay">
-<h3>Fresh Food Delivered</h3>
-
-<p>Hot & tasty meals at your door</p>
 </div>
-</div>
-
 </div>
 
 <script>

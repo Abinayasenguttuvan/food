@@ -212,7 +212,80 @@ h2{
 font-size:12px;
 }
 }
+/* LOGIN LINK */
 
+.login-link{
+    text-align:center;
+    margin-top:15px;
+    margin-bottom:10px;
+    color:#fff;
+    font-size:14px;
+}
+
+.login-link a{
+    color:#ff6b35;
+    text-decoration:none;
+    font-weight:600;
+    margin-left:5px;
+    transition:0.3s;
+}
+
+.login-link a:hover{
+    color:#ff8c42;
+    text-decoration:underline;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+    .login-link{
+        font-size:13px;
+    }
+
+}
+/* STACKLY LOGO */
+
+.stackly-logo{
+    position:absolute;
+    top:20px;
+    left:20px;
+    z-index:100;
+    display:block;
+}
+
+.stackly-logo img{
+    width:120px;
+    height:auto;
+    display:block;
+    transition:0.3s ease;
+}
+
+.stackly-logo img:hover{
+    transform:scale(1.05);
+}
+
+/* TABLET */
+@media(max-width:900px){
+
+    .stackly-logo img{
+        width:100px;
+    }
+
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+    .stackly-logo{
+        top:12px;
+        left:12px;
+    }
+
+    .stackly-logo img{
+        width:80px;
+    }
+
+}
 </style>
 </head>
 
@@ -258,7 +331,15 @@ font-size:12px;
 
 <button onclick="signup()">Sign Up</button>
 
+<div class="login-link">
+    Already have an account?
+    <a href="./login.html">Login</a>
+</div>
+
 <p id="error"></p>
+
+
+
 
 <div class="social">
 <button onclick="go404()"><i class="fab fa-google"></i> Google</button>
@@ -268,14 +349,21 @@ font-size:12px;
 </div>
 
 <!-- RIGHT -->
+<!-- RIGHT -->
 <div class="right">
-    <div class="login-logo">
-        <img src="./white.webp" alt="Stackly Ride Logo" style="width:100px; height:auto;">
-      </div>
-<img src="./burger.webp">
-<div class="overlay">
-<h3>Fresh Food Daily</h3>
-<p>Join & order your favorites</p>
+
+    <!-- STACKLY LOGO -->
+    <a href="./index.html" class="stackly-logo">
+        <img src="./white.webp" alt="Stackly Logo">
+    </a>
+
+    <img src="./burger.webp" alt="Burger">
+
+    <div class="overlay">
+        <h3>Fresh Food Delivered</h3>
+        <p>Hot & tasty meals at your door</p>
+    </div>
+
 </div>
 </div>
 
