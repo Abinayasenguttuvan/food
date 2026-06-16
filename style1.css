@@ -24,7 +24,7 @@ ul { list-style: none; }
     top: 0;
     z-index: 9999;
     width: 100%;
-    padding: 18px 40px;
+    padding: 10px 10px;
     background:  green;
     color: #fff;
     display: flex;
