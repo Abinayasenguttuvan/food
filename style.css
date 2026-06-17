@@ -221,7 +221,32 @@
             }
         }
         
+        .menu-toggle{
+            display:none;
+        }
         
+        @media(max-width:768px){
+        
+            .menu-toggle{
+                display:block;
+                cursor:pointer;
+                font-size:28px;
+            }
+        
+            .nav-links{
+                display:none;
+                position:absolute;
+                top:100%;
+                left:0;
+                width:100%;
+                background:goldenrod;
+                flex-direction:column;
+            }
+        
+            .nav-links.active{
+                display:flex;
+            }
+        }
         
         
         

@@ -58,7 +58,7 @@ body{
 
 /* ===== HERO SECTION ===== */
 .fdHero{
-    position:relative; height:500px; display:flex; align-items:center; justify-content:center; text-align:center; border-radius:20px; overflow:hidden;
+    position:relative;padding-top: 20px;; height:500px; display:flex; align-items:center; justify-content:center; text-align:center; border-radius:20px; overflow:hidden;
     background-image:url("burger.webp"); background-size:cover; background-position:center;
 }
 .fdHeroOverlay{
@@ -407,6 +407,14 @@ body{
 
     
 </section>
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  
+  menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+  });
+  </script>
 
 <script>
 // Animate cards on scroll

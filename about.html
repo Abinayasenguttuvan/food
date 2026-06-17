@@ -50,6 +50,7 @@
         </div>
 
     </header>
+    
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <!-- Font Awesome -->
@@ -978,6 +979,7 @@ fdpObserver.observe(card);
     
     </div>
     </section>
+    
 
     <style>
         /* ===== JOURNEY SECTION ===== */
@@ -1219,7 +1221,14 @@ fdjReveal();
         </div>
     </footer>
     
-    
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+        
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+        </script>
     
 </body>
 </html>
